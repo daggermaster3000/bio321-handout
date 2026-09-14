@@ -25,7 +25,7 @@ Primary cilia share a conserved architecture consisting of a **microtubule-based
 Ciliopathies are a group of human Mendelian disorders caused by structural and functional defects in cilia. These disorders have a wide variety of phenotypes affecting multiple organ systems including the retina, the kidney, the skeleton and the brain. Joubert syndrome (JBTS), a prototypical ciliopathy, can be caused by mutations in approximately 40 genes.
 All JBTS patients show malformations in cerebellar development, recognisable on MRI's and named the molar tooth sign. 
 ![[Pasted image 20260909122628.png|401]]
-**Figure 2: MRI images of the molar tooth sign (https://depts.washington.edu/joubert/joubertsyndrome.php)**
+**Figure 2: MRI images of the molar tooth sign ([University of Washington Joubert Syndrome Research](https://depts.washington.edu/joubert/joubertsyndrome.php))**
 
 JBTS patients also present with additional phenotypes such as retinal defects, kidney cysts, axonal tract malformations and scoliosis.
 
@@ -33,7 +33,7 @@ JBTS patients also present with additional phenotypes such as retinal defects, k
 ## The vertebrate cerebellum
 The cerebellum is found in the hindbrain and is involved in the maintenance of balance and posture, voluntary movement coordination, motor learning and some cognitive functions. It contains half of the mature neurons of the adult brain even though being only 10% of the whole brain. In human the cerebellum is separated into two hemispheres that are connected by a thin midline area called the **vermis**. It consists of an outer layer of gray matter called the cerebellar cortex surrounding inner white matter. It is connected to the brain through the **cerebellar peduncles**.
 ![[Pasted image 20260909133844.png]]
-**Figure 3: The human cerebellum (from https://teachmeanatomy.info/neuroanatomy/structures/cerebellum/)**
+**Figure 3: The human cerebellum (from [TeachMeAnatomy](https://teachmeanatomy.info/neuroanatomy/structures/cerebellum/))**
 
 In zebrafish the layout is a bit different, however the neural circuits remain conserved (across all jawed vertebrates). It is made up of the calcula cerebelli, corpus cerebelli and vestibulolateral lobe (caudal lobe and eminentia granularis)
 ![[Pasted image 20260910083713.png|226]]
@@ -49,7 +49,7 @@ Zebrafish larvae are optically transparent as well as a rapid developmental time
 ### Developmental stages
 Zebrafish development is divided into 8 distinct periods, each having specific biological processes and milestones.
 ![[Pasted image 20260911155839.png]]
-**Figure 6: Zebrafish developmental stages. (From [https://www.zeclinics.com/blog/understanding-zebrafish-development-stages/]())**
+**Figure 6: Zebrafish developmental stages. (From [ZeClinics](https://www.zeclinics.com/blog/understanding-zebrafish-development-stages/))**
 
 1. **Zygote** (0-45min post-fertilization)
 2. **Cleavage**
@@ -72,7 +72,7 @@ Zebrafish development is divided into 8 distinct periods, each having specific b
 	1. Cartilage development in the head
 8. **Larval stage**
 	1. Swim bladder inflates, food seeking and avoidance behaviors indicate maturing CNS
-More details here: [https://zfin.org/zf_info/zfbook/stages/]()
+More details here: [The Zebrafish Book — stages of embryonic development (ZFIN)](https://zfin.org/zf_info/zfbook/stages/)
 
 ### Mutant zebrafish
 ![[Pasted image 20260911161551.png|652]]
@@ -162,7 +162,7 @@ A quick review of microscopy basics.
 The tissue of interest is illuminated by light of a specific wavelength. This light is absorbed by a fluorophore which will become excited. It will then emit light at a longer wavelength that can be detected by the microscope. 
 
 ![[Pasted image 20260914104540.png|338]]
-**Figure 9: Fluorophore absorption and emission profiles (From: [https://www.microscopyu.com/techniques/fluorescence/introduction-to-fluorescence-microscopy](Absolute banger of a knowledge base))**
+**Figure 9: Fluorophore absorption and emission profiles (From: [MicroscopyU — absolute banger of a knowledge base](https://www.microscopyu.com/techniques/fluorescence/introduction-to-fluorescence-microscopy))**
 
 In standard fluorescence microscopy, the whole sample is illuminated by the excitation wavelength therefore we will detect in-focus and out of focus light, creating a blurred image. 
 ![[Pasted image 20260914103840.png|287]]
@@ -175,7 +175,7 @@ Confocal microscopy solves this issue by adding a pinhole to the setup, meaning 
 ![[Pasted image 20260914105426.png|291]]
 The microscope we will be using is a spinning disk confocal microscope. Meaning that the excitation beams are generated with a Nipkow disk. This allows fast imaging and is ideal for time-lapse recordings in *in-vivo* specimens (not our case for this course).
 ![[Pasted image 20260914105859.png]]
-**Figure 11: Nipkow disk configuration (From: https://www.microscopyu.com/techniques/confocal/introductory-confocal-concepts)**
+**Figure 11: Nipkow disk configuration (From: [MicroscopyU](https://www.microscopyu.com/techniques/confocal/introductory-confocal-concepts))**
 
 ### Key variables and parameters in microscopy
 A brief reminder of two important concepts 
@@ -195,7 +195,7 @@ These parameters are important to keep in mind when designing an experiment. But
 
 - The higher the NA, the better the resolving power of a microscope ($r$)
 - Shorter wavelength leads to better (lower) resolution
-- For more details: https://www.microscopyu.com/microscopy-basics/resolution
+- For more details: [MicroscopyU — resolution](https://www.microscopyu.com/microscopy-basics/resolution)
 # Designing the experiment
 The aims of the project are the following:
 
@@ -246,7 +246,7 @@ The following table contains the secondary antibodies available in the lab:
 | Goat | Rabbit         | IgG          | 568       | A11036 | 1:300–400 |
 | Goat | Rabbit         | IgG          | 647       | A21245 | 1:300–400 |
 
-The BC43 has four laser lines. Decide which target goes in which channel, then fill in the dye you will use and the antibody it is conjugated to. You can go to this website to help you visualise the ex/em peaks: [https://www.fpbase.org/spectra/](). We will not use all of the channels. 
+The BC43 has four laser lines. Decide which target goes in which channel, then fill in the dye you will use and the antibody it is conjugated to. You can go to this website to help you visualise the ex/em peaks: [FPbase spectra viewer](https://www.fpbase.org/spectra/). We will not use all of the channels. 
 
 **Experiment 1**
 
@@ -577,9 +577,9 @@ The rest of the calculations will be done during the practical.
 # Analyzing your data
 In this section we will look at how we are going to analyse your data. We will be using an awesome open source python image visualisation tool called [napari](https://napari.org/stable/). This means that anyone can modify it, develop modules and plugins for a specific application. With the rise of vibe-coding developing your own software is becoming trivial. 
 ## Installing the tool
-1) Install git https://git-scm.com/install/
-2) Install python/anaconda [https://www.anaconda.com/download](https://www.anaconda.com/download/success)
-3) The tool we will use can be downloaded here: https://github.com/daggermaster3000/ARGUS Follow the instructions from the README file to install it.
+1) Install [git](https://git-scm.com/install/)
+2) Install [python/anaconda](https://www.anaconda.com/download/success)
+3) The tool we will use can be downloaded here: [ARGUS](https://github.com/daggermaster3000/ARGUS). Follow the instructions from the README file to install it.
 4) Test everything is working
 ## Experiment 1
 The analysis of this experiment will illustrate how we quantitatively assess images. You will generate a few representative samples from each group and visually assess the integrity of each labelled structure.
@@ -610,4 +610,34 @@ You can take screenshots of the viewer in the file menu and copy/paste to your p
 
 ## Plotting and statistics
 # References
+## Literature
+Bielas, S. L., Silhavy, J. L., Brancati, F., Kisseleva, M. V., Al-Gazali, L., Sztriha, L., Bayoumi, R. A., Zaki, M. S., Abdel-Aleem, A., Rosti, R. O., Kayserili, H., Swistun, D., Scott, L. C., Bertini, E., Boltshauser, E., Fazzi, E., Travaglini, L., Field, S. J., Gayral, S., … Gleeson, J. G. (2009). Mutations in *INPP5E*, encoding inositol polyphosphate-5-phosphatase E, link phosphatidyl inositol signaling to the ciliopathies. *Nature Genetics*, 41(9), 1032–1036. [10.1038/ng.423](https://doi.org/10.1038/ng.423)
 
+Kaslin, J., & Brand, M. (2013). Cerebellar development and neurogenesis in zebrafish. In M. Manto, J. D. Schmahmann, F. Rossi, D. L. Gruol, & N. Koibuchi (Eds.), *Handbook of the Cerebellum and Cerebellar Disorders* (pp. 1441–1462). Springer. [10.1007/978-94-007-1333-8_63](https://doi.org/10.1007/978-94-007-1333-8_63)
+
+Kaslin, J., Kroehne, V., Benato, F., Argenton, F., & Brand, M. (2013). Development and specification of cerebellar stem and progenitor cells in zebrafish: from embryo to adult. *Neural Development*, 8, 9. [10.1186/1749-8104-8-9](https://doi.org/10.1186/1749-8104-8-9)
+
+Kimmel, C. B., Ballard, W. W., Kimmel, S. R., Ullmann, B., & Schilling, T. F. (1995). Stages of embryonic development of the zebrafish. *Developmental Dynamics*, 203(3), 253–310. [10.1002/aja.1002030302](https://doi.org/10.1002/aja.1002030302)
+
+Park, S. M., Jang, H. J., & Lee, J. H. (2019). Roles of primary cilia in the developing brain. *Frontiers in Cellular Neuroscience*, 13, 218. [10.3389/fncel.2019.00218](https://doi.org/10.3389/fncel.2019.00218)
+
+Stringer, C., Wang, T., Michaelos, M., & Pachitariu, M. (2021). Cellpose: a generalist algorithm for cellular segmentation. *Nature Methods*, 18(1), 100–106. [10.1038/s41592-020-01018-x](https://doi.org/10.1038/s41592-020-01018-x)
+
+Yopak, K. E., Pakan, J. M. P., & Wylie, D. (2017). The cerebellum of nonmammalian vertebrates. In J. H. Kaas (Ed.), *Evolution of Nervous Systems* (2nd ed., Vol. 1, pp. 373–385). Elsevier. [10.1016/B978-0-12-804042-3.00015-4](https://doi.org/10.1016/B978-0-12-804042-3.00015-4)
+
+Zhang, R., Tang, J., Li, T., Zhou, J., & Pan, W. (2022). *INPP5E* and coordination of signaling networks in cilia. *Frontiers in Molecular Biosciences*, 9, 885592. [10.3389/fmolb.2022.885592](https://doi.org/10.3389/fmolb.2022.885592)
+
+## Web resources
+- [MicroscopyU — introduction to fluorescence microscopy](https://www.microscopyu.com/techniques/fluorescence/introduction-to-fluorescence-microscopy)
+- [MicroscopyU — introductory confocal concepts](https://www.microscopyu.com/techniques/confocal/introductory-confocal-concepts)
+- [MicroscopyU — resolution](https://www.microscopyu.com/microscopy-basics/resolution)
+- [FPbase spectra viewer](https://www.fpbase.org/spectra/) — plot excitation and emission spectra of fluorophores together
+- [The Zebrafish Book — stages of embryonic development (ZFIN)](https://zfin.org/zf_info/zfbook/stages/)
+- [ZeClinics — understanding zebrafish development stages](https://www.zeclinics.com/blog/understanding-zebrafish-development-stages/)
+- [TeachMeAnatomy — the cerebellum](https://teachmeanatomy.info/neuroanatomy/structures/cerebellum/)
+- [University of Washington — Joubert syndrome](https://depts.washington.edu/joubert/joubertsyndrome.php)
+
+## Software
+- [napari](https://napari.org/stable/) — multidimensional image viewer for Python
+- [ARGUS](https://github.com/daggermaster3000/ARGUS) — the analysis tool used in this course
+- [git](https://git-scm.com/install/) and [Anaconda](https://www.anaconda.com/download/success) — needed to install ARGUS
