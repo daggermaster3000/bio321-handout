@@ -153,6 +153,7 @@ Clearing with glycerol raises the refractive index of the sample to reduce light
 | DAPI                       | Counterstain nuclei for anatomical reference          |
 | Glycerol                   | Clear tissue (refractive index matching)              |
 | Mounting medium + antifade | Preserve sample and slow photobleaching               |
+
 ## Microscopy refresher
 ### Basic principles
 The tissue of interest is illuminated by light of a specific wavelength. This light is absorbed by a fluorophore which will become excited. It will then emit light at a longer wavelength that can be detected by the microscope. 
