@@ -499,12 +499,14 @@ Continue until larvae sink to the bottom.
 | **Primary antibody solution** | Primary antibody in PBDT + 2% goat serum   |
 | **DAPI solution**             | DAPI 1:1000 in ddH₂O                       |
 | **Glycerol clearing**         | 25%, 50%, 70% glycerol in PDT or PBS       |
+
 **Stocks:** 
 - BSA 2%
 - Tx-100 10%
 - DMSO 100%
 - PBS 100%
 - Goat serum (GS) 100%
+
 ### Calculations/Dilutions
 Calculate the following dilutions for the reagents you will be using. When total volume is not specified, think about how many tubes you will be using.
 
@@ -531,6 +533,7 @@ Calculate the following dilutions for the reagents you will be using. When total
 |         | PBDT  |        |
 |         | GS    |        |
 |         | total |        |
+
 **Experiment 1**
 
 | Reagent |       | volume |
@@ -549,6 +552,7 @@ Calculate the following dilutions for the reagents you will be using. When total
 |         | 1     |        |
 |         | 2     |        |
 |         | total |        |
+
 **Experiment 2**
 
 | Reagent |            | volume |
