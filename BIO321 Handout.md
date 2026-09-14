@@ -1,3 +1,4 @@
+![[Pasted image 20260914194946.png]]
 # Project overview
 In this project we will analyse the neural circuits of the cerebellum as well as brain morphology in zebrafish carrying a mutation in the *inpp5e* gene (a causative gene for the ciliopathy Joubert Syndrome). We will use immunofluorescence to analyse general cerebellar circuit morphology, eurydendroid cell clusters in the cerebellum as well as general brain morphology of *inpp5e* mutants compared to controls.
 ```table-of-contents

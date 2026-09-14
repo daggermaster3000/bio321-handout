@@ -313,6 +313,12 @@ td:empty::after{content:"";display:block;height:1.1em;border-bottom:1px solid va
       if (marks[i].el.getBoundingClientRect().top > 120) break;
       active = marks[i];
     }
+    // At the foot of the page the last headings never reach the top of the
+    // viewport, so hand the last one the highlight once we can go no further.
+    var doc = document.documentElement;
+    if (window.scrollY + window.innerHeight >= doc.scrollHeight - 2) {
+      active = marks[marks.length - 1];
+    }
     if (active === current) return;
     current = active;
     links.forEach(function (a) {
