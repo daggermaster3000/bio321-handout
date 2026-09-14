@@ -1,5 +1,5 @@
 # Project overview
-In this project we will analyse the neural circuits of the cerebellum as well as brain morphology in zebrafish carrying a mutation in the *inpp5e* gene (a causative gene for the ciliopathy Joubert Syndrome). We will use immunofluorescence to analyse granule cells and their axons (parallel fibers), eurydendroid cell clusters in the cerebellum as well as axonal connections in the cerebellum of *inpp5e* mutants compared to controls.
+In this project we will analyse the neural circuits of the cerebellum as well as brain morphology in zebrafish carrying a mutation in the *inpp5e* gene (a causative gene for the ciliopathy Joubert Syndrome). We will use immunofluorescence to analyse general cerebellar circuit morphology, eurydendroid cell clusters in the cerebellum as well as general brain morphology of *inpp5e* mutants compared to controls.
 ```table-of-contents
 title: **Table of contents**
 style: nestedList
@@ -197,11 +197,11 @@ These parameters are important to keep in mind when designing an experiment. But
 # Designing the experiment
 The aims of the project are the following:
 
-| Aim                                          | Biological question                                                                | Markers / channels                                                 | Analysis                                                                                              | Quantification                                                                  |
-| -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| **1. General cerebellar circuit morphology** | Is the overall organisation and morphology of cerebellar circuits altered?         | **AcTub**: axonal tracts<br>**SV2**: synaptic neuropil<br>**DAPI**: nuclei | Visual / qualitative assessment of cerebellar architecture                                            | **Qualitative**                                                                 |
-| **2. Eurydendroid cells in the cerebellum**  | Are Eurydendroid cell number, distribution, and associated axonal bundles altered? | **Calretinin**: Eurydendroid cells<br>**DAPI**: nuclei                | Cell segmentation/counting with **Cellpose** + manual region annotation; assessment of axonal bundles | **Cell count per hemisphere**<br>**Axonal bundle integrity**<br>**Axonal bundle width** |
-| **3. Whole-brain morphology**                | Are the relative sizes of major brain regions altered?                             | **DAPI** from both stainings                                       | Manual anatomical delineation of **forebrain, midbrain, and hindbrain**                               | **Area measurements** for each region                                           |
+| Aim                                          | Biological question                                                                | Markers / channels                                                         | Analysis                                                                                              | Quantification                                                                          |
+| -------------------------------------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| **1. General cerebellar circuit morphology** | Is the overall organisation and morphology of cerebellar circuits altered?         | **AcTub**: axonal tracts<br>**SV2**: synaptic neuropil<br>**DAPI**: nuclei | Visual / qualitative assessment of cerebellar architecture                                            | **Qualitative**                                                                         |
+| **2. Eurydendroid cells in the cerebellum**  | Are Eurydendroid cell number, distribution, and associated axonal bundles altered? | **Calretinin**: Eurydendroid cells<br>**DAPI**: nuclei                     | Cell segmentation/counting with **Cellpose** + manual region annotation; assessment of axonal bundles | **Cell count per hemisphere**<br>**Axonal bundle integrity**<br>**Axonal bundle width** |
+| **3. Whole-brain morphology**                | Are the relative sizes of major brain regions altered?                             | **DAPI** from both stainings                                               | Manual anatomical delineation of **forebrain, midbrain, and hindbrain**                               | **Area measurements** for each region                                                   |
 
 ![[Pasted image 20260914141201.png|364]]
 **Figure 12: Experimental setup, mutants can be discriminated basedon their phenotype (body curvature), therefore samples are pooled for staining, total tubes: 2**
@@ -569,6 +569,7 @@ Calculate the following dilutions for the reagents you will be using. When total
 |         | PBDT  |        |
 |         | 1     |        |
 |         | total |        |
+
 
 The rest of the calculations will be done during the practical.
 # Analyzing your data
