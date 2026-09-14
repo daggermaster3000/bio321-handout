@@ -25,39 +25,248 @@ All JBTS patients show malformations in cerebellar development, recognisable on 
 ![[Pasted image 20260909122628.png|401]]
 **Figure 2: MRI images of the molar tooth sign (https://depts.washington.edu/joubert/joubertsyndrome.php)**
 
+JBTS patients also present with additional phenotypes such as retinal defects, kidney cysts, axonal tract malformations and scoliosis.
 
+*Inpp5e* mutations have been reported to cause deficiencies in ciliary transduction, cilia stability and ciliopathies (Bielas et al., 2009; Zhang et al., 2022). 
 ## The vertebrate cerebellum
+The cerebellum is found in the hindbrain and is involved in the maintenance of balance and posture, voluntary movement coordination, motor learning and some cognitive functions. It contains half of the mature neurons of the adult brain even though being only 10% of the whole brain. In human the cerebellum is separated into two hemispheres that are connected by a thin midline area called the **vermis**. It consists of an outer layer of gray matter called the cerebellar cortex surrounding inner white matter. It is connected to the brain through the **cerebellar peduncles**.
+![[Pasted image 20260909133844.png]]
+**Figure 3: The human cerebellum (from https://teachmeanatomy.info/neuroanatomy/structures/cerebellum/)**
+
+In zebrafish the layout is a bit different, however the neural circuits remain conserved (across all jawed vertebrates). It is made up of the calcula cerebelli, corpus cerebelli and vestibulolateral lobe (caudal lobe and eminentia granularis)
+![[Pasted image 20260910083713.png|226]]
+**Figure 4: Zebrafish cerebellum (from Kaslin et al., 2013)**
+
+The cerebellar circuits receive inputs from two excitatory fibers, climbing fibers (CFs) that synapse onto Purkinje cells and mossy fibers (MFs) that synapse onto granule cells (GCs). PCs send information to deep cerebellar nuclei (DCN) in the white matter, which send information to other areas of the brain via the cerebellar peduncles. Zebrafish cerebellum lacks white matter and DCN. PCs project to eurydendroid cells (ECs), which send information to other areas of the brain.
+![[Pasted image 20260910084513.png|359]]
+**Figure 5: Cerebellar neural circuits in human and zebrafish (by A.Noble based on Yopak et al., 2017)**
+
 ## Zebrafish
+Zebrafish larvae are optically transparent as well as a rapid developmental timeline, making them an attractive model for microscopy experiments and studying developmental biology. By treating the larvae with 1-phenyl-2-thiourea (PTU) we can block melanin pigmentation removing obstruction caused by pigmented cells.
+
+### Developmental stages
+Zebrafish development is divided into 8 distinct periods, each having specific biological processes and milestones.
+![[Pasted image 20260911155839.png]]
+**Figure 6: Zebrafish developmental stages. (From [https://www.zeclinics.com/blog/understanding-zebrafish-development-stages/]())**
+
+1. **Zygote** (0-45min post-fertilization)
+2. **Cleavage**
+	1. Rapid cell division
+	2. Transition from single cell to multicellular structure
+3. **Blastula** 
+	1. Epiboly marks the start of cell movements that shape the embryo
+4. **Gastrula**
+	1. Morphogenesis begins
+	2. The body plan starts to form
+5. **Segmentation**
+	1. Developoment of brain and spinal cord
+	2. Start of organogenesis, formation of tail and somites, first movements
+	3. Midbrain-Hindbrain boundary formed by the end of the period 
+6. **Pharyngula**
+	1. Body straightening, pigmentation
+	2. circulatory system starts forming and fins begin developing
+	3. First heartbeat
+7. **Hatching**
+	1. Cartilage development in the head
+8. **Larval stage**
+	1. Swim bladder inflates, food seeking and avoidance behaviors indicate maturing CNS
+More details here: [https://zfin.org/zf_info/zfbook/stages/]()
+
+### Mutant zebrafish
+![[Pasted image 20260911161551.png|652]]
+**Figure 7: Illustration of the *inpp5e* genomic region and the *zh507* variant**
+
+*Inpp5e-zh507* mutants carry an 18bp deletion in exons 5/6 in the inositol polyphosphatase catalytic domain. The resulting protein is consequently believed to lose it's function. Briefly (ask me if you want more details), INPP5E is responsible for converting a certain type of ciliary membrane lipid to another. Each type plays different roles in the ciliary landscape. INPP5E knock out leads to an increase in Ptdins(4,5)P2 (one of the lipid species) in the ciliary membrane. TULP3 (an adaptor protein part of the IFT complex) binds to the Ptdins(4,5)P2  and leads to an accumulation of GPR161 (a negative regulator of the SHH pathway) in the cilia.
+
+*Inpp5ezh507* display a curved body axis, severe retinal dystrophy, kidney cysts and cannot be raised as adults. You will (if all goes well) find out if they have a phenotype in the brain. Previously our lab has performed the same type of experiments on the *zh506* variant and found no significant differences when compared to controls. However this variant isn't a total knock out and there are high chances the protein is still able to somewhat fulfil it's function.
 
 ## Immunohistochemistry
 
-### Antibodies
-### Fluorophores
-### Classic protocol explanation 
+> If you already know about this you can skip.
 
+### The idea
+The whole idea relies on an antibody binding to it's antigen with high specificity. In general antibodies are ordered by companies that specialise in producing them. However a few labs make them homemade for more specific applications. Generally we perform **indirect immunostaining**:
+- The primary antibody (unlabelled) binds the antigen
+- The secondary antibody (labelled with a fluorophore or enzyme) binds the primary
+The main benefits of this setup are **signal amplification** as multiple secondaries can bind one primary and **flexibility** in the experimental setup.
+
+
+
+![[Pasted image 20260911165725.png|567]]
+**Figure 8: Illustration of antibody labelling principle**
+
+### Explanation of a generic protocol
+Next, we will discuss the essential steps of a staining protocol
+1. Fixation
+2. Permeabilization
+3. Blocking
+4. Primary staining
+5. Secondary staining
+6. Counter stain
+7. Clearing and mounting
+#### Fixation
+The first step is called fixation. It allows us to lock proteins into place to take a snapshot of the living state. This will prevent degradation, proteins from diffusing away or changing shape. This is generally done with one of the following:
+- Paraformaldehyde (PFA), crosslinks proteins together by forming methylene bridges between amino groups on adjacent proteins. This builds a stable mesh that holds antigens in position
+- Methanol 
+- Trichloroacetic acid (TCA), precipitates proteins and can expose some epitopes better. Harsher on the sample
+Keep in mind that there is a trade-off: too little fixation and the tissue is destroyed during the experimental process or antigens will diffuse. Too much and the epitope will be masked. Fixation is antibody dependant and therefore has to be optimised and validated empirically.
+
+#### Washing
+Washing removes a chemical agent (eg. PFA,primary antibody,...) before the next one is added (usually between every step). It clears residual PFA after fixation, which would otherwise crosslink the ABs. After antibody incubation steps it removes unbound antibodies (lower background signal). Usually done with PBS (phosphate-buffered saline), that keeps the sample in physiological conditions to not osmotically shock or denature the tissue. A detergent (Triton X-100 or Tween-20) is added to the wash solution to keep the sample membrane permeable. In general more/longer washes gives cleaner images.
+#### Permeabilization
+Antibodies being quite large (150 kDa) need a little help to penetrate the sample and access the antigen. Treating with Triton x-100, acetone or proteinase K helps the antibody penetrate the sample.
+
+ - **Triton X-100 / Tween-20**: detergents that dissolve lipid membranes, creating pores. Triton is stronger and Tween is milder.
+- **Cold acetone/methanol**: extract lipids and permeabilize, done cold (e.g. −20 °C) to be gentler and preserve morphology.
+- **Proteinase K**: an enzyme that partially digests protein, loosening the fixed mesh. Powerful for dense/older tissue but easy to overdo: too much destroys morphology. Usually followed by a brief re-fixation to re-stabilize. (We won't do that)
+
+**Trade-off:** more permeabilization = better antibody access but worse structural preservation. Older/larger samples need more and delicate structures need less.
+
+#### Blocking
+Antibodies stick weakly and non-specifically to non specific surfaces in the sample. Blocking floods these non specific sites with a generic protein (like BSA) so the only strong binding site left is the specific target. 
+
+#### Primary antibody incubation
+The antibody is incubated @4 °C overnight. This slows everything down and favours high affinity binding over weak non-specific sticking. The main parameter we control here is dilution. Too concentrated will give a lot of background signal, to dilute will give too weak of a signal. We normally determine this by titration through a process called antibody validation.
+
+#### Secondary antiboy incubatiuon
+Similar to the primary incubation step. The secondary is raised agains the primary's species (eg. goat (<- primary's host species) anti-rabbit (<- secondary's host species)) (see appendix for more on how they are made) and carries a fluorophore. Fluorophore photobleach, so this step is done in the dark to preserve signal. 
+
+#### Nuclear counterstain
+This step is optional. Generally, DAPI is used to bind DNA and label nuclei.
+
+#### Clearing and mounting
+Clearing with glycerol raises the refractive index of the sample to reduce light scattering. We can then image deeper into the sample with less blur. We then mount our sample such as the region of interest is as close as possible to the coverslip as objectives have limited working distance. 
+
+#### Recap
+| Reagent                    | Role                                                  |
+| -------------------------- | ----------------------------------------------------- |
+| PFA                        | Crosslink and preserve proteins in place              |
+| PBS                        | Physiological buffer, base of most solutions          |
+| Detergent (Triton/Tween)   | Permeabilize membranes; reduce nonspecific binding    |
+| Acetone/methanol           | Precipitate/permeabilize (alternative to detergent)   |
+| Proteinase K               | Enzymatically loosen fixed tissue for antibody access |
+| Serum / BSA                | Block nonspecific antibody binding sites              |
+| DMSO                       | Aid reagent penetration                               |
+| Primary antibody           | Specific recognition of the target antigen            |
+| Secondary antibody         | Bind primary, carry the label, amplify signal         |
+| Fluorophore                | Emit detectable light                                 |
+| DAPI                       | Counterstain nuclei for anatomical reference          |
+| Glycerol                   | Clear tissue (refractive index matching)              |
+| Mounting medium + antifade | Preserve sample and slow photobleaching               |
 ## Microscopy refresher
 ### Basic principles
+The tissue of interest is illuminated by light of a specific wavelength. This light is absorbed by a fluorophore which will become excited. It will then emit light at a longer wavelength that can be detected by the microscope. 
 
+![[Pasted image 20260914104540.png|338]]
+**Figure 9: Fluorophore absorption and emission profiles (From: [https://www.microscopyu.com/techniques/fluorescence/introduction-to-fluorescence-microscopy](Absolute banger of a knowledge base))**
+
+In standard fluorescence microscopy, the whole sample is illuminated by the excitation wavelength therefore we will detect in-focus and out of focus light, creating a blurred image. 
+![[Pasted image 20260914103840.png|287]]
+**Figure 10: Basic fluorescence microscopy setup (From wikipedia)**
+
+Confocal microscopy solves this issue by adding a pinhole to the setup, meaning that only light that is in focus (from the focal plane of the lens) will be detected. This creates a sharper image and enables us to image multiple planes (or optical sections) of our sample. The way the sample is imaged is also fundamentally different: illumination is achieved by scanning one or more focused beams of light from a laser accross the specimen. 
+![[Pasted image 20260914104944.png|318]]
+**Figure 10: Principles of confocal microscopy. Laser light is focus on a thick specimen by reflection from the dichroic mirror (DM)  and the objective lens. A pinhole allows only excited light from the confocal place to reach the photomultiplier detector (PMT)**
 ### The BC43 microscope
+![[Pasted image 20260914105426.png|291]]
+The microscope we will be using is a spinning disk confocal microscope. Meaning that the excitation beams are generated with a Nipkow disk. This allows fast imaging and is ideal for time-lapse recordings in *in-vivo* specimens (not our case for this course).
+![[Pasted image 20260914105859.png]]
+**Figure 11: Nipkow disk configuration (From: https://www.microscopyu.com/techniques/confocal/introductory-confocal-concepts)**
 
+### Key variables and parameters in microscopy
+A brief reminder of two important concepts 
+#### Numerical aperture and resolution
+Numerical aperture (NA) is a measure of the **ability of an objective to gather light and resolve specimen detail at a fixed distance**. It is specified by the manufacturer.
+$$
+NA = n \times sin(\alpha)
+$$
+Where $\alpha$ is half the angle of angular aperture (or light cone), $n$ is the refractive index of the medium between the lens and the specimen. How does this relate to resolution?
+
+Resolution ($r$) is the **smallest resolvable distance between two objects**. (How close can two objects be and still distinguish them as separate). It relates to NA with the following formula:
+$$
+r = 0.61\lambda/NA
+$$
+where $\lambda$ is the imaging wavelength.
+These parameters are important to keep in mind when designing an experiment. But to summarize:
+
+- The higher the NA, the better the resolving power of a microscope ($r$)
+- Shorter wavelength leads to better (lower) resolution
+- For more details: https://www.microscopyu.com/microscopy-basics/resolution
 # Designing the experiment
+The aims of the project are the following:
+
+| Aim                                          | Biological question                                                                | Markers / channels                                                 | Analysis                                                                                              | Quantification                                                                  |
+| -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| **1. General cerebellar circuit morphology** | Is the overall organisation and morphology of cerebellar circuits altered?         | **AcTub**: axonal tracts<br>**SV2**: synaptic neuropil<br>**DAPI**: nuclei | Visual / qualitative assessment of cerebellar architecture                                            | **Qualitative**                                                                 |
+| **2. Eurydendroid cells in the cerebellum**  | Are Eurydendroid cell number, distribution, and associated axonal bundles altered? | **Calretinin**: Eurydendroid cells<br>**DAPI**: nuclei                | Cell segmentation/counting with **Cellpose** + manual region annotation; assessment of axonal bundles | **Cell count per hemisphere**<br>**Axonal bundle integrity**<br>**Axonal bundle width** |
+| **3. Whole-brain morphology**                | Are the relative sizes of major brain regions altered?                             | **DAPI** from both stainings                                       | Manual anatomical delineation of **forebrain, midbrain, and hindbrain**                               | **Area measurements** for each region                                           |
+
+
 ## Choosing the fluorophores
-The BC43 has four laser lines. Decide which target goes in which channel, then fill in the dye you will use and the antibody it is conjugated to. Keep at least ~50 nm between the emission peaks of any two dyes you pick.
+Below is a table of the primary antibodies we will use:
 
-| Channel | Excitation | Emission filter | Dye | Target |
-| --- | --- | --- | --- | --- |
-| Blue | 405 nm | 450/50 |  |  |
-| Green | 488 nm | 525/50 |  |  |
-| Orange | 561 nm | 600/50 |  |  |
-| Far red | 640 nm | 685/40 |  |  |
+**Experiment 1**
 
-## Calculations/Dilutions
+| Antibody | Type        | **Target**        |
+| -------- | ----------- | ----------------- |
+| AcTub    | mouse IgG2b | axoneme + axons   |
+| SV2      | mouse IgG1  | neuropil/synapses |
 
-# Protocol
+**Experiment 2**
 
-# Mounting
+| Antibody   | Type   | **Target**         |
+| ---------- | ------ | ------------------ |
+| calretinin | Rabbit | eurydendroid cells |
 
-# Imaging principles
+
+The following table contains the secondary antibodies available in the lab:
+
+| Host | Target species | Target class | Conjugate | Cat. # | Dilution  |
+| ---- | -------------- | ------------ | --------- | ------ | --------- |
+| Goat | Mouse          | IgG          | 488 Plus  | A32723 | 1:300–400 |
+| Goat | Mouse          | IgG1         | 488       | A21121 | 1:300–400 |
+| Goat | Mouse          | IgG2b        | 488       | A21141 | 1:300–400 |
+| Goat | Mouse          | IgG2a        | 488       | A21131 | 1:300–400 |
+| Goat | Mouse          | IgG2a        | 546       | A21133 | 1:300–400 |
+| Goat | Mouse          | IgG          | 555       | A21424 | 1:300–400 |
+| Goat | Mouse          | IgG1         | 568       | A21124 | 1:300–400 |
+| Goat | Mouse          | IgG2a        | 568       | A21134 | 1:300–400 |
+| Goat | Mouse          | IgG2b        | 568       | A21144 | 1:300–400 |
+| Goat | Mouse          | IgG2a        | 647       | A21241 | 1:300–400 |
+| Goat | Mouse          | IgG2b        | 647       | A21242 | 1:300–400 |
+| Goat | Mouse          | IgM          | 647       | A21238 | 1:300–400 |
+| Goat | Rabbit         | IgG          | 405 Plus  | A48254 | 1:300–400 |
+| Goat | Rabbit         | IgG          | 488       | A11034 | 1:300–400 |
+| Goat | Rabbit         | IgG          | 568       | A11036 | 1:300–400 |
+| Goat | Rabbit         | IgG          | 647       | A21245 | 1:300–400 |
+
+The BC43 has four laser lines. Decide which target goes in which channel, then fill in the dye you will use and the antibody it is conjugated to. You can go to this website to help you visualise the ex/em peaks: [https://www.fpbase.org/spectra/](). We will not use all of the channels. 
+
+**Experiment 1**
+
+| Channel | Laser Excitation | Fluorophore conjugate | Emission | Target | cat. # |
+| ------- | ---------------- | --------------------- | -------- | ------ | ------ |
+| Blue    | 405 nm           |                       |          |        |        |
+| Green   | 488 nm           |                       |          |        |        |
+| Orange  | 561 nm           |                       |          |        |        |
+| Far red | 640 nm           |                       |          |        |        |
+
+**Experiment 2**
+
+| Channel | Laser Excitation | Fluorophore conjugate | Emission | Target | cat. # |
+| ------- | ---------------- | --------------------- | -------- | ------ | ------ |
+| Blue    | 405 nm           |                       |          |        |        |
+| Green   | 488 nm           |                       |          |        |        |
+| Orange  | 561 nm           |                       |          |        |        |
+| Far red | 640 nm           |                       |          |        |        |
+
+
+## Protocol
+
+### Calculations/Dilutions
+
+
+
 
 # Analyzing your data
 

@@ -25,23 +25,25 @@ TEMPLATE = SITE / "template.html"
 OUT = SITE / "index.html"
 FIGURES = SITE / "figures"
 
-# Front matter for the masthead. Edit here, not in the generated HTML.
-EYEBROW = "BIO321 · Practical course 2026 · University of Zurich"
-HEADING = 'The cerebellum in <em>inpp5e</em> mutants'
-SUBTITLE = "A whole-mount immunofluorescence and imaging project in larval zebrafish."
-FACTS = [
-    ("Model", "<i>Danio rerio</i> larvae"),
-    ("Gene", "<i>inpp5e</i> — Joubert syndrome"),
-    ("Method", "Whole-mount immunofluorescence"),
-    ("Imaging", "Andor BC43 spinning-disk"),
-]
-NOTICE = (
-    "<p class='notice'><strong>Draft handout.</strong> The section structure below is "
-    "final; the section text is still being written. Anything marked in the dashed "
-    "boxes has not been filled in yet.</p>"
-)
-
 IMAGE_EXT = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg", ".avif"}
+
+
+def split_frontmatter(md: str) -> tuple[dict[str, str], str]:
+    """Read an optional YAML-ish `---` block: title, eyebrow, subtitle, notice."""
+    m = re.match(r"^---\n(.*?)\n---\n?", md, flags=re.S)
+    if not m:
+        return {}, md
+    meta = {}
+    for line in m.group(1).split("\n"):
+        if ":" in line and not line.startswith((" ", "\t", "#")):
+            key, _, value = line.partition(":")
+            meta[key.strip().lower()] = value.strip().strip("'\"")
+    return meta, md[m.end():]
+
+
+def inline_md(text: str) -> str:
+    """Render a one-line field, so *inpp5e* in the title stays italic."""
+    return markdown.markdown(text).removeprefix("<p>").removesuffix("</p>")
 
 
 def slugify(text: str) -> str:
@@ -74,10 +76,41 @@ def copy_figure(name: str) -> str | None:
     return f"figures/{dest.name}"
 
 
+# Inline math is parked here while markdown runs, so that *, _ and smart quotes
+# inside a formula survive to KaTeX untouched.
+MATH: list[str] = []
+MATH_TOKEN = "xmathx{}x"
+
+
+def stash_math(md: str) -> str:
+    """Hide $$...$$ and $...$ from the markdown parser."""
+    MATH.clear()
+
+    def block(m: re.Match) -> str:
+        expr = m.group(1).strip()
+        return f'\n\n<div class="mathblock">\\[{html.escape(expr)}\\]</div>\n\n'
+
+    def inline(m: re.Match) -> str:
+        MATH.append(m.group(1))
+        return MATH_TOKEN.format(len(MATH) - 1)
+
+    md = re.sub(r"\$\$(.+?)\$\$", block, md, flags=re.S)
+    md = re.sub(r"(?<![\\$])\$(?!\s)([^\n$]+?)(?<!\s)\$(?!\$)", inline, md)
+    return md
+
+
+def restore_math(content: str) -> str:
+    """Put the inline formulas back, in the delimiters KaTeX is told to read."""
+    for n, expr in enumerate(MATH):
+        content = content.replace(MATH_TOKEN.format(n), f"\\({html.escape(expr)}\\)")
+    return content
+
+
 def preprocess(md: str) -> str:
     """Turn Obsidian-only syntax into HTML markdown-python will pass through."""
     # Drop the Obsidian table-of-contents plugin block; the rail replaces it.
     md = re.sub(r"^```table-of-contents\n.*?^```\n?", "", md, flags=re.S | re.M)
+    md = stash_math(md)
 
     lines = md.split("\n")
     out: list[str] = []
@@ -234,6 +267,9 @@ def colour_channels(content: str) -> str:
 
 def main() -> None:
     md = NOTE.read_text(encoding="utf-8")
+    meta, md = split_frontmatter(md)
+    # The note names the page: its `title:` if it has one, else its filename.
+    title = meta.get("title") or NOTE.stem
     body = markdown.markdown(
         preprocess(md),
         extensions=["extra", "sane_lists", "smarty", "admonition"],
@@ -241,16 +277,22 @@ def main() -> None:
     content, toc = build_sections(body)
     content = colour_channels(content)
     content = re.sub(r"<td>(\d+ nm|\d+/\d+)</td>", r'<td class="nm">\1</td>', content)
+    content = restore_math(content)
+    # Wide tables scroll inside their own box rather than pushing the page out.
+    content = content.replace("<table>", '<div class="tablewrap"><table>')
+    content = content.replace("</table>", "</table></div>")
 
-    facts = "\n".join(f"    <dt>{k}</dt><dd>{v}</dd>" for k, v in FACTS)
+    def optional(field: str, tag: str, cls: str) -> str:
+        text = meta.get(field, "").strip()
+        return f'<{tag} class="{cls}">{inline_md(text)}</{tag}>' if text else ""
+
     page = TEMPLATE.read_text(encoding="utf-8")
     for key, value in {
-        "{{TITLE}}": "BIO321 Handout — The cerebellum in inpp5e mutants",
-        "{{EYEBROW}}": EYEBROW,
-        "{{HEADING}}": HEADING,
-        "{{SUBTITLE}}": SUBTITLE,
-        "{{FACTS}}": facts,
-        "{{NOTICE}}": NOTICE,
+        "{{TITLE}}": html.escape(re.sub(r"<[^>]+>", "", inline_md(title))),
+        "{{EYEBROW}}": optional("eyebrow", "p", "eyebrow"),
+        "{{HEADING}}": inline_md(title),
+        "{{SUBTITLE}}": optional("subtitle", "p", "sub"),
+        "{{NOTICE}}": optional("notice", "p", "notice"),
         "{{TOC}}": toc,
         "{{CONTENT}}": content,
     }.items():
