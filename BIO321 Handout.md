@@ -569,6 +569,7 @@ Calculate the following dilutions for the reagents you will be using. When total
 |         | PBDT  |        |
 |         | 1     |        |
 |         | total |        |
+
 The rest of the calculations will be done during the practical.
 # Analyzing your data
 In this section we will look at how we are going to analyse your data. We will be using an awesome open source python image visualisation tool called [napari](https://napari.org/stable/). This means that anyone can modify it, develop modules and plugins for a specific application. With the rise of vibe-coding developing your own software is becoming trivial. 
