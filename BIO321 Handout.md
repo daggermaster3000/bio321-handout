@@ -135,7 +135,7 @@ Similar to the primary incubation step. The secondary is raised agains the prima
 This step is optional. Generally, DAPI is used to bind DNA and label nuclei.
 
 #### Clearing and mounting
-Clearing with glycerol raises the refractive index of the sample to reduce light scattering. We can then image deeper into the sample with less blur. We then mount our sample such as the region of interest is as close as possible to the coverslip as objectives have limited working distance. 
+Clearing with glycerol raises the refractive index of the sample to reduce light scattering. We can then image deeper into the sample with less blur. We then mount our sample such as the region of interest is as close as possible to the coverslip as objectives have limited working distance. In our case we will be doing the experiments on whole-mounts, meaning that the whole specimen conserved (as opposed to slicing, where physical sections are cut from the specimen, mounted on a glass slide then imaged (a real pain))
 
 #### Recap
 | Reagent                    | Role                                                  |
@@ -155,6 +155,7 @@ Clearing with glycerol raises the refractive index of the sample to reduce light
 | Mounting medium + antifade | Preserve sample and slow photobleaching               |
 
 ## Microscopy refresher
+A quick review of microscopy basics.
 ### Basic principles
 The tissue of interest is illuminated by light of a specific wavelength. This light is absorbed by a fluorophore which will become excited. It will then emit light at a longer wavelength that can be detected by the microscope. 
 
@@ -202,6 +203,8 @@ The aims of the project are the following:
 | **2. Eurydendroid cells in the cerebellum**  | Are Eurydendroid cell number, distribution, and associated axonal bundles altered? | **Calretinin**: Eurydendroid cells<br>**DAPI**: nuclei                | Cell segmentation/counting with **Cellpose** + manual region annotation; assessment of axonal bundles | **Cell count per hemisphere**<br>**Axonal bundle integrity**<br>**Axonal bundle width** |
 | **3. Whole-brain morphology**                | Are the relative sizes of major brain regions altered?                             | **DAPI** from both stainings                                       | Manual anatomical delineation of **forebrain, midbrain, and hindbrain**                               | **Area measurements** for each region                                           |
 
+![[Pasted image 20260914141201.png|364]]
+**Figure 12: Experimental setup, mutants can be discriminated basedon their phenotype (body curvature), therefore samples are pooled for staining, total tubes: 2**
 
 ## Choosing the fluorophores
 Below is a table of the primary antibodies we will use:
@@ -262,18 +265,341 @@ The BC43 has four laser lines. Decide which target goes in which channel, then f
 | Far red | 640 nm           |                       |          |        |        |
 
 
-## Protocol
+# Whole mount antibody staining protocol
+The following section showcases the protocol we will be using. 
+## General Notes
 
+- Fix up to **20 larvae** in an Eppendorf tube.
+- Use **500 µL** for all steps unless stated otherwise.
+- Remove as much liquid as possible before each subsequent step, while ensuring that no embryos are accidentally aspirated.
+- Place tubes on a shaker during washing steps.
+- Make sure no larvae stick to the walls or lid of the tube.
+- **PBDT** can be prepared on the first day and stored at **4°C** for the following day.
+
+---
+
+## 1. Fix Larvae
+
+> **Note:** Fixation conditions depend on the antibody. The following options are available.
+
+### Option 1: PFA Fixation
+
+- Fix larvae in **4% PFA**:
+  - **Overnight at 4°C**, or
+  - **2 h at RT**
+- Duration may depend on the antibody.
+
+### Option 2: Methanol Fixation
+
+- Fix larvae in **80% MeOH in DMSO**:
+  - **Overnight at 4°C**, or
+  - **Minimum 2 h at RT**
+
+### Option 3: TCA Fixation
+
+- Fix larvae in **2% TCA** for **3 h at RT**.
+
+---
+
+## 2. Wash Larvae
+
+## PFA-Fixed Larvae
+
+1. Wash larvae **4 × 5 min in PBS**.
+   - Larvae can be stored at **4°C for several days** after this step.
+   - Only continue with the following steps if proceeding directly to antibody staining.
+2. Wash **1 × 5 min with ddH₂O**.
+3. Permeabilize with **prechilled acetone** for **7 min at −20°C**.
+   - The time can be extended for larvae **older than 3 dpf** to increase permeability.
+4. Wash **1 × 5 min with ddH₂O**.
+5. Wash **1 × 5 min with PBS**.
+
+---
+
+## MeOH-Fixed Larvae
+
+1. Rehydrate larvae through decreasing MeOH concentrations:
+   - **50% MeOH/PBS**, 5 min
+   - **25% MeOH/PBS**, 5 min
+2. Wash **4 × 5 min with PBS**.
+   - Larvae can be stored at **4°C for several days** until staining.
+
+---
+
+## TCA-Fixed Larvae
+
+1. Wash larvae **4 × 5 min in PBS**.
+   - Larvae can be stored at **4°C for several days** until staining.
+
+---
+
+## 3. Antibody Staining
+
+### 3.1 Blocking
+
+Block larvae with:
+
+**PBDT + 10% goat serum**
+
+Where:
+
+> **PBDT = PBS + 1% BSA + 0.5% Triton X-100 + 1% DMSO**
+
+- Incubate for **30 min at RT**.
+- The serum should match the species in which the **secondary antibody** was raised.
+
+---
+
+### 3.2 Primary Antibody
+
+- Add **100 µL primary antibody** diluted in **PBDT + 2% goat serum**.
+- Incubate **overnight at 4°C**.
+- Primary antibody dilution depends on the antibody.
+
+---
+
+## 4. Next Day
+
+### 4.1 Recover Primary Antibody
+
+> **Optional:** For precious antibodies, recover the antibody mixture into an Eppendorf tube.
+
+- Label the recovered antibody with:
+  - Exact antibody dilution
+  - Date
+
+---
+
+### 4.2 Wash
+
+Wash larvae **4 × with PBDT**:
+
+- 10 min
+- 15 min
+- 30 min
+- 1 h
+
+---
+
+### 4.3 Secondary Antibody
+
+- Add **100 µL secondary antibody** diluted in PBDT.
+- Typical dilution:
+  - **1:400 Alexa Fluor-conjugated secondary antibody**
+  - Dilution may vary depending on the antibody.
+- Incubate:
+  - **Minimum 2 h at RT**, or
+  - **Overnight at 4°C**
+
+> ⚠️ **From this point onward, keep tubes in the dark.**
+
+---
+
+### 4.4 Wash
+
+Wash larvae **4 × with PDT**:
+
+> **PDT = PBS + 0.5% Triton X-100 + 1% DMSO**
+
+Wash durations:
+
+- 10 min
+- 15 min
+- 30 min
+- 1 h
+
+---
+
+### 4.5 DAPI Staining
+
+> **Optional**
+
+Add:
+
+- **100 µL DAPI**
+- Sigma, **10236276001**
+- Dilution: **1:1000 in ddH₂O**
+- Incubate for **15 min**
+
+Then wash:
+
+- **3 × 15 min with PDT**
+
+---
+
+## 5. Clearing
+
+Clear larvae through an increasing glycerol series:
+
+1. **25% glycerol/PDT** (or PBS)
+2. **50% glycerol/PDT** (or PBS)
+3. **70% glycerol/PDT** (or PBS)
+
+Continue until larvae sink to the bottom.
+
+> **Tip:** Surface tension can keep larvae floating. Gently knock the tube against the bench to check whether the larvae begin to sink.
+
+- Larvae can remain in **70% glycerol at 4°C** until mounting.
+
+---
+
+## 6. Mounting
+
+## Materials
+
+- Mowiol/DABCO
+- Vacuum grease
+- Nail polish
+- Insect pins
+- Large coverslip
+- Small coverslip
+- 100 µL pipette
+
+## Procedure
+
+1. Mount larvae on coverslips using **Mowiol/DABCO**.
+
+2. **Deyolk larvae** using insect pins.
+
+3. If desired, cut off the heads and align:
+   - Heads separately
+   - Tails separately
+
+4. Align larvae on a **large coverslip**.
+
+> **Important:** Do not use a slide. Mounting on a coverslip allows imaging from both the **ventral and dorsal** sides.
+
+5. Prepare a small coverslip by making **4 posts of vacuum grease**.
+
+6. Place the small coverslip on top of the aligned larvae.
+
+7. Gently press the small coverslip down until the sample **just makes contact** with the coverslip.
+
+> **Note:** If the larvae have been kept whole, the head will touch the coverslip first because the sample is thicker there. The tail may therefore float to the side during the next step.
+
+8. Using a **100 µL pipette**, add drops of Mowiol to the side of the small coverslip.
+
+9. Allow the Mowiol to be drawn underneath the coverslip.
+
+10. Continue adding Mowiol **drop by drop** until the entire area beneath the coverslip is filled.
+
+11. Seal the coverslip with **nail polish**.
+
+12. Store mounted samples at **4°C**.
+
+---
+
+# Reagent Recipes
+
+| Reagent                       | Composition                                |
+| ----------------------------- | ------------------------------------------ |
+| **PBDT**                      | PBS + 1% BSA + 0.5% Triton X-100 + 1% DMSO |
+| **PDT**                       | PBS + 0.5% Triton X-100 + 1% DMSO          |
+| **PBDT + goat serum**         | PBDT + 10% goat serum for blocking         |
+| **Primary antibody solution** | Primary antibody in PBDT + 2% goat serum   |
+| **DAPI solution**             | DAPI 1:1000 in ddH₂O                       |
+| **Glycerol clearing**         | 25%, 50%, 70% glycerol in PDT or PBS       |
+**Stocks:** 
+- BSA 2%
+- Tx-100 10%
+- DMSO 100%
+- PBS 100%
+- Goat serum (GS) 100%
 ### Calculations/Dilutions
+Calculate the following dilutions for the reagents you will be using. When total volume is not specified, think about how many tubes you will be using.
 
+| Reagent |        | volume |
+| ------- | ------ | ------ |
+| PBDT    |        |        |
+|         | PBS    |        |
+|         | BSA    |        |
+|         | TX-100 |        |
+|         | DMSO   |        |
+|         | total  | 30ml   |
 
+| Reagent |        | volume |
+| ------- | ------ | ------ |
+| PDT     |        |        |
+|         | PBS    |        |
+|         | TX-100 |        |
+|         | DMSO   |        |
+|         | total  | 30ml   |
 
+| Reagent |       | volume |
+| ------- | ----- | ------ |
+| PBDT+GS |       |        |
+|         | PBDT  |        |
+|         | GS    |        |
+|         | total |        |
+**Experiment 1**
 
+| Reagent |       | volume |
+| ------- | ----- | ------ |
+| 1°AB    |       |        |
+|         | PBDT  |        |
+|         | GS    |        |
+|         | SV2   |        |
+|         | Actub |        |
+|         | total |        |
+
+| Reagent |       | volume |
+| ------- | ----- | ------ |
+| 2°AB    |       |        |
+|         | PBDT  |        |
+|         | 1     |        |
+|         | 2     |        |
+|         | total |        |
+**Experiment 2**
+
+| Reagent |            | volume |
+| ------- | ---------- | ------ |
+| 1°AB    |            |        |
+|         | PBDT       |        |
+|         | GS         |        |
+|         | Calretinin |        |
+|         | total      |        |
+
+| Reagent |       | volume |
+| ------- | ----- | ------ |
+| 2°AB    |       |        |
+|         | PBDT  |        |
+|         | 1     |        |
+|         | total |        |
+The rest of the calculations will be done during the practical.
 # Analyzing your data
+In this section we will look at how we are going to analyse your data. We will be using an awesome open source python image visualisation tool called [napari](https://napari.org/stable/). This means that anyone can modify it, develop modules and plugins for a specific application. With the rise of vibe-coding developing your own software is becoming trivial. 
+## Installing the tool
+1) Install git https://git-scm.com/install/
+2) Install python/anaconda [https://www.anaconda.com/download](https://www.anaconda.com/download/success)
+3) The tool we will use can be downloaded here: https://github.com/daggermaster3000/ARGUS Follow the instructions from the README file to install it.
+4) Test everything is working
+## Experiment 1
+The analysis of this experiment will illustrate how we quantitatively assess images. You will generate a few representative samples from each group and visually assess the integrity of each labelled structure.
+Run the ARGUS code, the viewer should open (can be a bit slow on some machines)
 
-## Using the software
-## Exploring the data
-## Normalizing
+We start by opening the folder containing our experiment.
+![[Pasted image 20260914165609.png]]
+
+You will find that the widgets are very cramped, use their title to drag them somewhere else and expand them comfortably.
+
+![[Pasted image 20260914170002.png]]
+
+Go through your samples select one and press open. The image should load.
+Adjust the contrast in this pane:
+![[Pasted image 20260914170213.png|476]]
+You can go through the stack using the z slider:
+![[Pasted image 20260914170440.png|433]]
+Next, you can press the cube in this panel:
+![[Pasted image 20260914170525.png]]
+to load 3D view. Go ahead and inspect of few of your samples.
+You can take screenshots of the viewer in the file menu and copy/paste to your power point
+![[Pasted image 20260914170922.png|486]]
+
+
+## Experiment 2
+
+## Experiment 3
+
 ## Plotting and statistics
 # References
 
