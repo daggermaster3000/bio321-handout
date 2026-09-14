@@ -1,5 +1,6 @@
-![[Pasted image 20260914194946.png]]
 # Project overview
+
+![[Pasted image 20260914194946.png]]
 In this project we will analyse the neural circuits of the cerebellum as well as brain morphology in zebrafish carrying a mutation in the *inpp5e* gene (a causative gene for the ciliopathy Joubert Syndrome). We will use immunofluorescence to analyse general cerebellar circuit morphology, eurydendroid cell clusters in the cerebellum as well as general brain morphology of *inpp5e* mutants compared to controls.
 ```table-of-contents
 title: **Table of contents**
@@ -39,7 +40,7 @@ In zebrafish the layout is a bit different, however the neural circuits remain c
 **Figure 4: Zebrafish cerebellum (from Kaslin et al., 2013)**
 
 The cerebellar circuits receive inputs from two excitatory fibers, climbing fibers (CFs) that synapse onto Purkinje cells and mossy fibers (MFs) that synapse onto granule cells (GCs). PCs send information to deep cerebellar nuclei (DCN) in the white matter, which send information to other areas of the brain via the cerebellar peduncles. Zebrafish cerebellum lacks white matter and DCN. PCs project to eurydendroid cells (ECs), which send information to other areas of the brain.
-![[Pasted image 20260910084513.png|359]]
+![[Pasted image 20260910084513.png|700]]
 **Figure 5: Cerebellar neural circuits in human and zebrafish (by A.Noble based on Yopak et al., 2017)**
 
 ## Zebrafish
