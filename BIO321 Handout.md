@@ -43,6 +43,9 @@ The cerebellar circuits receive inputs from two excitatory fibers, climbing fibe
 ![[Pasted image 20260910084513.png|700]]
 **Figure 5: Cerebellar neural circuits in human and zebrafish (by A.Noble based on Yopak et al., 2017)**
 
+Below you can see a dorsal view of the ZF brain from https://mapzebrain.org/atlas/2d. The cerebellum is highlighted in blue and the eurydendroid cells in color.
+![[Pasted image 20260915175526.png]]
+
 ## Zebrafish
 Zebrafish larvae are optically transparent as well as a rapid developmental timeline, making them an attractive model for microscopy experiments and studying developmental biology. By treating the larvae with 1-phenyl-2-thiourea (PTU) we can block melanin pigmentation removing obstruction caused by pigmented cells.
 
