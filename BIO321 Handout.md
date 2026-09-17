@@ -25,6 +25,8 @@ Primary cilia share a conserved architecture consisting of a **microtubule-based
 **Figure 1: Structure of the primary cilium (adapted from Park et al., 2019)**
 
 **Inpp5e** is located in the ciliary membrane as well as the base and the axoneme and plays a key role in regulating ciliary membrane composition, and IFT indirectly. Its dysfunction has been shown to affect the Shh pathway.
+
+**Ift88** is part of the IFT complex.
 ## Ciliopathies
 Ciliopathies are a group of human Mendelian disorders caused by structural and functional defects in cilia. These disorders have a wide variety of phenotypes affecting multiple organ systems including the retina, the kidney, the skeleton and the brain. Joubert syndrome (JBTS), a prototypical ciliopathy, can be caused by mutations in approximately 40 genes.
 All JBTS patients show malformations in cerebellar development, recognisable on MRI's and named the molar tooth sign. 
@@ -85,10 +87,11 @@ More details here: [The Zebrafish Book — stages of embryonic development (ZFIN
 ![[Pasted image 20260911161551.png|652]]
 **Figure 7: Illustration of the *inpp5e* genomic region and the *zh507* variant**
 
-*Inpp5e-zh507* mutants carry an 18bp deletion in exons 5/6 in the inositol polyphosphatase catalytic domain. The resulting protein is consequently believed to lose it's function. Briefly (ask me if you want more details), INPP5E is responsible for converting a certain type of ciliary membrane lipid to another. Each type plays different roles in the ciliary landscape. INPP5E knock out leads to an increase in Ptdins(4,5)P2 (one of the lipid species) in the ciliary membrane. TULP3 (an adaptor protein part of the IFT complex) binds to the Ptdins(4,5)P2  and leads to an accumulation of GPR161 (a negative regulator of the SHH pathway) in the cilia.
+*Inpp5e-zh507* mutants carry an 18bp deletion in exons 5/6 in the inositol polyphosphatase catalytic domain. The resulting protein is consequently believed to lose it's function. Briefly, INPP5E is responsible for converting a certain type of ciliary membrane lipid to another. Each type plays different roles in the ciliary landscape. INPP5E knock out leads to an increase in Ptdins(4,5)P2 (one of the lipid species) in the ciliary membrane. TULP3 (an adaptor protein part of the IFT complex) binds to the Ptdins(4,5)P2  and leads to an accumulation of GPR161 (a negative regulator of the SHH pathway) in the cilia.
 
-*Inpp5ezh507* display a curved body axis, severe retinal dystrophy, kidney cysts and cannot be raised as adults. You will (if all goes well) find out if they have a phenotype in the brain. Previously our lab has performed the same type of experiments on the *zh506* variant and found no significant differences when compared to controls. However this variant isn't a total knock out and there are high chances the protein is still able to somewhat fulfil it's function.
+*Inpp5e zh507* display a curved body axis, severe retinal dystrophy, kidney cysts and cannot be raised as adults. You will (if all goes well) find out if they have a phenotype in the brain. Previously our lab has performed the same type of experiments on the *zh506* variant and found no significant differences when compared to controls. However this variant isn't a total knock out and there are high chances the protein is still able to somewhat fulfil it's function.
 
+> *Ift88* also display a curved body axis and kidney cysts 
 ## Immunohistochemistry
 
 > If you already know about this you can skip.
