@@ -145,7 +145,7 @@ Antibodies stick weakly and non-specifically to non specific surfaces in the sam
 The antibody is incubated @4 °C overnight. This slows everything down and favours high affinity binding over weak non-specific sticking. The main parameter we control here is dilution. Too concentrated will give a lot of background signal, to dilute will give too weak of a signal. We normally determine this by titration through a process called antibody validation.
 
 #### 6. Secondary antiboy staining
-Similar to the primary incubation step. The secondary is raised agains the primary's species (eg. goat (<- primary's host species) anti-rabbit (<- secondary's host species)) (see appendix for more on how they are made) and carries a fluorophore. Fluorophore photobleach, so this step is done in the dark to preserve signal. 
+Similar to the primary incubation step. The secondary is raised agains the primary's species (eg. goat (<- secondary's host species) anti-rabbit (<- primary's host species)) (see appendix for more on how they are made) and carries a fluorophore. Fluorophore photobleach, so this step is done in the dark to preserve signal. 
 
 #### 7. Nuclear counterstain
 This step is optional. Generally, DAPI is used to bind DNA and label nuclei.
