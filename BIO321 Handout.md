@@ -2,6 +2,7 @@
 
 ![[Pasted image 20260914194946.png]]
 In this project we will analyse the neural circuits of the cerebellum as well as brain morphology in zebrafish carrying a mutation in the *inpp5e* gene (a causative gene for the ciliopathy Joubert Syndrome). We will use immunofluorescence to analyse general cerebellar circuit morphology, eurydendroid cell clusters in the cerebellum as well as general brain morphology of *inpp5e* mutants compared to controls. 
+
 > As you will be more than planned, we will add a mutant to the project (*ift88*) so everyone can participate.
 
 
@@ -218,66 +219,52 @@ The aims of the project are the following:
 
 ## Experimental setup
 Both *inpp5e zh507* and *ift88* mutants display a curved body phenotype. This allows us to sort them without having to genotype them. However, for the sake of it we will be genotyping *ift88* to validate the curved phenotype. 
-![[Pasted image 20260914141201.png|364]]
-**Figure 12: Experimental setup, mutants can be discriminated basedon their phenotype (body curvature), therefore samples are pooled for staining, total tubes: 2**
+![[Pasted image 20260917132915.png]]
+**Figure 12: Experimental setup, mutants can be discriminated based on their phenotype (body curvature), therefore samples are pooled for staining**
 
 ## Choosing the fluorophores
 Below is a table of the primary antibodies we will use:
 
-**Experiment 1**
-
-| Antibody | Type        | **Target**        |
-| -------- | ----------- | ----------------- |
-| AcTub    | mouse IgG2b | axoneme + axons   |
-| SV2      | mouse IgG1  | neuropil/synapses |
-
-**Experiment 2**
-
-| Antibody   | Type   | **Target**         |
-| ---------- | ------ | ------------------ |
-| calretinin | Rabbit | eurydendroid cells |
+| Antibody   | Host        | **Target**         | Dilution |
+| ---------- | ----------- | ------------------ | -------- |
+| AcTub      | mouse IgG2b | axoneme + axons    | 1:400    |
+| SV2        | mouse IgG1  | neuropil/synapses  | 1:200    |
+| calretinin | Rabbit IgG  | eurydendroid cells | 1:1000   |
 
 
 The following table contains the secondary antibodies available in the lab:
 
-| Host | Target species | Target class | Conjugate | Cat. # | Dilution  |
-| ---- | -------------- | ------------ | --------- | ------ | --------- |
-| Goat | Mouse          | IgG          | 488 Plus  | A32723 | 1:300–400 |
-| Goat | Mouse          | IgG1         | 488       | A21121 | 1:300–400 |
-| Goat | Mouse          | IgG2b        | 488       | A21141 | 1:300–400 |
-| Goat | Mouse          | IgG2a        | 488       | A21131 | 1:300–400 |
-| Goat | Mouse          | IgG2a        | 546       | A21133 | 1:300–400 |
-| Goat | Mouse          | IgG          | 555       | A21424 | 1:300–400 |
-| Goat | Mouse          | IgG1         | 568       | A21124 | 1:300–400 |
-| Goat | Mouse          | IgG2a        | 568       | A21134 | 1:300–400 |
-| Goat | Mouse          | IgG2b        | 568       | A21144 | 1:300–400 |
-| Goat | Mouse          | IgG2a        | 647       | A21241 | 1:300–400 |
-| Goat | Mouse          | IgG2b        | 647       | A21242 | 1:300–400 |
-| Goat | Mouse          | IgM          | 647       | A21238 | 1:300–400 |
-| Goat | Rabbit         | IgG          | 405 Plus  | A48254 | 1:300–400 |
-| Goat | Rabbit         | IgG          | 488       | A11034 | 1:300–400 |
-| Goat | Rabbit         | IgG          | 568       | A11036 | 1:300–400 |
-| Goat | Rabbit         | IgG          | 647       | A21245 | 1:300–400 |
+| Host | Target species | Target class | Alexa Conjugate (abs) | Cat. # | Dilution  |
+| ---- | -------------- | ------------ | --------------------- | ------ | --------- |
+| Goat | Mouse          | IgG          | 488 Plus              | A32723 | 1:300–400 |
+| Goat | Mouse          | **IgG1**     | 488                   | A21121 | 1:300–400 |
+| Goat | Mouse          | **IgG2b**    | 488                   | A21141 | 1:300–400 |
+| Goat | Mouse          | IgG2a        | 488                   | A21131 | 1:300–400 |
+| Goat | Mouse          | IgG2a        | 546                   | A21133 | 1:300–400 |
+| Goat | Mouse          | IgG          | 555                   | A21424 | 1:300–400 |
+| Goat | Mouse          | **IgG1**     | 568                   | A21124 | 1:300–400 |
+| Goat | Mouse          | IgG2a        | 568                   | A21134 | 1:300–400 |
+| Goat | Mouse          | **IgG2b**    | 568                   | A21144 | 1:300–400 |
+| Goat | Mouse          | IgG2a        | 647                   | A21241 | 1:300–400 |
+| Goat | Mouse          | **IgG2b**    | 647                   | A21242 | 1:300–400 |
+| Goat | Mouse          | IgM          | 647                   | A21238 | 1:300–400 |
+| Goat | Rabbit         | **IgG**      | 405 Plus              | A48254 | 1:300–400 |
+| Goat | Rabbit         | **IgG**      | 488                   | A11034 | 1:300–400 |
+| Goat | Rabbit         | **IgG**      | 568                   | A11036 | 1:300–400 |
+| Goat | Rabbit         | **IgG**      | 647                   | A21245 | 1:300–400 |
 
-The BC43 has four laser lines. Decide which target goes in which channel, then fill in the dye you will use and the antibody it is conjugated to. You can go to this website to help you visualise the ex/em peaks: [FPbase spectra viewer](https://www.fpbase.org/spectra/). We will not use all of the channels. 
+The BC43 has four laser lines. Decide which target goes in which channel, then fill in the dye you will use and the antibody it is conjugated to. You can go to this website to help you visualise the ex/em peaks: [FPbase spectra viewer](https://www.fpbase.org/spectra/) (eg. Alexa Fluor 488). 
 
-**Experiment 1**
+> Note: DAPI is in the Blue channel. There are multiple possible combinations.
 
-| Channel | Laser Excitation | Fluorophore conjugate | Emission | Target | cat. # |
-| ------- | ---------------- | --------------------- | -------- | ------ | ------ |
-| Blue    | 405 nm           |                       |          |        |        |
-| Green   | 488 nm           |                       |          |        |        |
-| Orange  | 561 nm           |                       |          |        |        |
-| Far red | 640 nm           |                       |          |        |        |
+**Antibody assignments**
 
-**Experiment 2**
-
-| Channel | Laser Excitation | Fluorophore conjugate | Emission | Target | cat. # |
-| ------- | ---------------- | --------------------- | -------- | ------ | ------ |
-| Blue    | 405 nm           |                       |          |        |        |
-| Green   | 488 nm           |                       |          |        |        |
-| Orange  | 561 nm           |                       |          |        |        |
-| Far red | 640 nm           |                       |          |        |        |
+| Channel | Laser Excitation | Target structure | 1°AB | 2°AB | cat. # |
+| ------- | ---------------- | ---------------- | ---- | ---- | ------ |
+| Blue    | 405 nm           |                  |      |      |        |
+| Green   | 488 nm           |                  |      |      |        |
+| Orange  | 561 nm           |                  |      |      |        |
+| Far red | 640 nm           |                  |      |      |        |
 
 
 # Whole mount antibody staining protocol
@@ -460,7 +447,7 @@ Continue until larvae sink to the bottom.
 
 ## 6. Mounting
 
-## Materials
+### Materials
 
 - Mowiol/DABCO
 - Vacuum grease
@@ -540,51 +527,36 @@ Calculate the following dilutions for the reagents you will be using. When total
 |         | DMSO   |        |
 |         | total  | 30ml   |
 
-| Reagent     |       | volume |
-| ----------- | ----- | ------ |
-| **PBDT+GS** |       |        |
-|             | PBDT  |        |
-|             | GS    |        |
-|             | total |        |
+| Reagent     |        | volume |
+| ----------- | ------ | ------ |
+| **PBDT+GS** |        |        |
+|             | PBDT   |        |
+|             | GS 10% |        |
+|             | total  |        |
 
 **Experiment 1**
 
-| Reagent  |       | volume |
-| -------- | ----- | ------ |
-| **1°AB** |       |        |
-|          | PBDT  |        |
-|          | GS    |        |
-|          | SV2   |        |
-|          | Actub |        |
-|          | total |        |
+Wait until we know the amount of tubes we will be using (once the larvae are sorted)
 
-| Reagent  |       | volume |
-| -------- | ----- | ------ |
-| **2°AB** |       |        |
-|          | PBDT  |        |
-|          | 1     |        |
-|          | 2     |        |
-|          | total |        |
+| Reagent      |                   | volume |
+| ------------ | ----------------- | ------ |
+| **1°AB** Mix |                   |        |
+|              | PBDT              |        |
+|              | GS 2%             |        |
+|              | SV2 1:200         |        |
+|              | Actub 1:400       |        |
+|              | Calretinin 1:1000 |        |
+|              | total             |        |
 
-**Experiment 2**
+| Reagent      |                    | volume |
+| ------------ | ------------------ | ------ |
+| **2°AB** Mix |                    |        |
+|              | PBDT               |        |
+|              | 2°SV2 1:300        |        |
+|              | 2°Actub 1:300      |        |
+|              | 2°Calretinin 1:300 |        |
+|              | total              |        |
 
-| Reagent  |            | volume |
-| -------- | ---------- | ------ |
-| **1°AB** |            |        |
-|          | PBDT       |        |
-|          | GS         |        |
-|          | Calretinin |        |
-|          | total      |        |
-
-| Reagent  |       | volume |
-| -------- | ----- | ------ |
-| **2°AB** |       |        |
-|          | PBDT  |        |
-|          | 1     |        |
-|          | total |        |
-
-
-The rest of the calculations will be done during the practical.
 # Analyzing your data
 # Analyzing your data //hidden
 (still working on this so ignore for now)
