@@ -12,10 +12,14 @@ from __future__ import annotations
 import html
 import re
 import shutil
+import subprocess
 import sys
 from pathlib import Path
 
 import markdown
+
+import pdf
+import schedule as schedule_sheet
 
 ROOT = Path(__file__).resolve().parent.parent
 NOTE = ROOT / "BIO321 Handout.md"
@@ -23,9 +27,62 @@ ATTACHMENTS = ROOT / "attachments"
 SITE = Path(__file__).resolve().parent
 TEMPLATE = SITE / "template.html"
 OUT = SITE / "index.html"
+SCHEDULE = ROOT / "Schedule.xlsx"
+SCHEDULE_OUT = SITE / "schedule.html"
+# The PDFs sit next to the pages they are printed from.
+HANDOUT_PDF = "BIO321-handout.pdf"
+SCHEDULE_PDF = "BIO321-schedule.pdf"
 FIGURES = SITE / "figures"
 
 IMAGE_EXT = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg", ".avif"}
+
+
+def git(*args: str) -> str:
+    """Run a git command in the repository, or return "" if that is not possible."""
+    try:
+        out = subprocess.run(
+            ["git", "-C", str(ROOT), *args],
+            capture_output=True, text=True, timeout=10, check=True,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return ""
+    return out.stdout.strip()
+
+
+def commit_url(sha: str) -> str:
+    """Turn the origin remote into a browsable commit link, ssh or https."""
+    remote = git("remote", "get-url", "origin")
+    m = re.match(r"(?:git@([^:]+):|https://(?:[^@]+@)?([^/]+)/)(.+?)(?:\.git)?$", remote)
+    if not m:
+        return ""
+    host, path = m.group(1) or m.group(2), m.group(3)
+    return f"https://{host}/{path}/commit/{sha}"
+
+
+def version_text() -> str:
+    """Short provenance for the running head of printed pages."""
+    sha, date = git("log", "-1", "--format=%h"), git("log", "-1", "--format=%cs")
+    return " · ".join(x for x in (sha, date) if x)
+
+
+def version_stamp() -> str:
+    """Stamp the page with the commit it was built from."""
+    sha, subject = git("log", "-1", "--format=%h"), git("log", "-1", "--format=%s")
+    if not sha:
+        return ""
+    date = git("log", "-1", "--format=%cs")
+    dirty = " + uncommitted changes" if git("status", "--porcelain") else ""
+    url = commit_url(sha)
+    label = f'<code>{html.escape(sha)}</code>' if not url else (
+        f'<a href="{html.escape(url)}"><code>{html.escape(sha)}</code></a>'
+    )
+    return (
+        '<p class="version">'
+        + label
+        + (f" · {html.escape(date)}" if date else "")
+        + f'<span>{html.escape(subject)}{html.escape(dirty)}</span>'
+        + "</p>"
+    )
 
 
 def split_frontmatter(md: str) -> tuple[dict[str, str], str]:
@@ -106,10 +163,53 @@ def restore_math(content: str) -> str:
     return content
 
 
+HIDDEN = re.compile(r"\s*//hidden\s*$", re.I)
+
+
+def strip_hidden(md: str) -> str:
+    """Drop headings marked `//hidden`, along with everything beneath them.
+
+    The marker hides a heading down to the next heading of the same or higher
+    level, so hiding `## Experiment 3` also hides its `###` subsections. On a
+    line of its own it hides that line alone. Markers inside fenced code
+    blocks are left as written.
+    """
+    out: list[str] = []
+    fence = None
+    skip_level = 0
+
+    for line in md.split("\n"):
+        fence_match = re.match(r"\s*(```+|~~~+)", line)
+        if fence_match:
+            token = fence_match.group(1)[0]
+            fence = None if fence and token == fence else (fence or token)
+        if fence:
+            if not skip_level:
+                out.append(line)
+            continue
+
+        heading = re.match(r"(#{1,6})\s", line)
+        if skip_level:
+            # Stay inside the hidden block until a heading climbs back out.
+            if heading and len(heading.group(1)) <= skip_level:
+                skip_level = 0
+            else:
+                continue
+
+        if HIDDEN.search(line):
+            if heading:
+                skip_level = len(heading.group(1))
+            continue  # a bare `//hidden` line hides only itself
+        out.append(line)
+
+    return "\n".join(out)
+
+
 def preprocess(md: str) -> str:
     """Turn Obsidian-only syntax into HTML markdown-python will pass through."""
     # Drop the Obsidian table-of-contents plugin block; the rail replaces it.
     md = re.sub(r"^```table-of-contents\n.*?^```\n?", "", md, flags=re.S | re.M)
+    md = strip_hidden(md)
     md = stash_math(md)
 
     lines = md.split("\n")
@@ -214,8 +314,15 @@ def build_sections(body: str) -> tuple[str, str]:
 
         rest = re.sub(r"<h([23])[^>]*>(.*?)</h\1>", anchor, rest, flags=re.S)
 
-        # Empty leaf headings get a visible placeholder instead of dead space.
-        rest = re.sub(r"(</h[234]>)(\s*)(?=<h[234]|\Z)", r"\1\n" + TODO + r"\2", rest)
+        # A heading with nothing under it gets a visible placeholder. A heading
+        # followed by a deeper one is not empty — its subsections are its body.
+        def placeholder(mm: re.Match) -> str:
+            level, gap, following = mm.group(1), mm.group(2), mm.group(3)
+            if following and int(following) > int(level):
+                return mm.group(0)
+            return f"</h{level}>\n{TODO}{gap}"
+
+        rest = re.sub(r"</h([234])>(\s*)(?=<h([234])|\Z)", placeholder, rest)
         if not rest.strip():
             rest = TODO
 
@@ -265,6 +372,63 @@ def colour_channels(content: str) -> str:
     return re.sub(r"<td>([A-Za-z ]{3,8})</td>", dot, content)
 
 
+def css_string(text: str) -> str:
+    """Make text safe inside a double-quoted CSS string."""
+    return text.replace("\\", "\\\\").replace('"', '\\"').replace("\n", " ")
+
+
+def rail_link(href: str, label: str) -> str:
+    """A standalone link under the contents rail, to the site's other page."""
+    return f'<p class="rail-link"><a href="{html.escape(href)}">{html.escape(label)}</a></p>'
+
+
+def write_page(
+    out: Path,
+    *,
+    title: str,
+    content: str,
+    toc: str,
+    version: str = "",
+    eyebrow: str = "",
+    subtitle: str = "",
+    notice: str = "",
+    rail: str = "",
+    main_class: str = "",
+    pdf_name: str = "",
+    page_size: str = "A4",
+    print_version: str = "",
+) -> None:
+    plain_title = re.sub(r"<[^>]+>", "", inline_md(title))
+    button = (
+        f'<a class="pdf-button" href="{html.escape(pdf_name)}" download>'
+        '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" '
+        'stroke-width="1.5"><path d="M8 2v8m0 0-3-3m3 3 3-3M3 13h10"/></svg>'
+        "Download PDF</a>"
+        if pdf_name
+        else ""
+    )
+    page = TEMPLATE.read_text(encoding="utf-8")
+    for key, value in {
+        "{{PDF_BUTTON}}": button,
+        "{{PAGE_SIZE}}": page_size,
+        "{{PRINT_TITLE}}": css_string(html.unescape(plain_title)),
+        "{{PRINT_VERSION}}": css_string(print_version),
+        "{{TITLE}}": html.escape(plain_title),
+        "{{EYEBROW}}": eyebrow,
+        "{{HEADING}}": inline_md(title),
+        "{{SUBTITLE}}": subtitle,
+        "{{NOTICE}}": notice,
+        "{{VERSION}}": version,
+        "{{TOC}}": toc,
+        "{{RAIL_EXTRA}}": rail,
+        "{{MAIN_CLASS}}": main_class,
+        "{{CONTENT}}": content,
+    }.items():
+        page = page.replace(key, value)
+    out.write_text(page, encoding="utf-8")
+    print(f"built {out.relative_to(ROOT)}  ({len(page):,} bytes)")
+
+
 def main() -> None:
     md = NOTE.read_text(encoding="utf-8")
     meta, md = split_frontmatter(md)
@@ -286,21 +450,66 @@ def main() -> None:
         text = meta.get(field, "").strip()
         return f'<{tag} class="{cls}">{inline_md(text)}</{tag}>' if text else ""
 
-    page = TEMPLATE.read_text(encoding="utf-8")
-    for key, value in {
-        "{{TITLE}}": html.escape(re.sub(r"<[^>]+>", "", inline_md(title))),
-        "{{EYEBROW}}": optional("eyebrow", "p", "eyebrow"),
-        "{{HEADING}}": inline_md(title),
-        "{{SUBTITLE}}": optional("subtitle", "p", "sub"),
-        "{{NOTICE}}": optional("notice", "p", "notice"),
-        "{{TOC}}": toc,
-        "{{CONTENT}}": content,
-    }.items():
-        page = page.replace(key, value)
+    stamp = version_stamp()
 
-    OUT.write_text(page, encoding="utf-8")
-    print(f"built {OUT.relative_to(ROOT)}  ({len(page):,} bytes)")
+    # Read the schedule first: the handout only links to it if it can be built.
+    weeks = toc_weeks = ""
+    if SCHEDULE.exists():
+        try:
+            toc_weeks = schedule_sheet.nav(SCHEDULE)
+            weeks = schedule_sheet.render(SCHEDULE)
+        except Exception as exc:  # a missing openpyxl, or a re-shaped sheet
+            print(f"  ! schedule not built: {exc}", file=sys.stderr)
+            SCHEDULE_OUT.unlink(missing_ok=True)
+
+    write_page(
+        OUT,
+        title=title,
+        eyebrow=optional("eyebrow", "p", "eyebrow"),
+        subtitle=optional("subtitle", "p", "sub"),
+        notice=optional("notice", "p", "notice"),
+        version=stamp,
+        toc=toc,
+        content=content,
+        rail=rail_link("schedule.html", "Course schedule") if weeks else "",
+        pdf_name=HANDOUT_PDF,
+        print_version=version_text(),
+    )
+    if weeks:
+        write_page(
+            SCHEDULE_OUT,
+            title="Course schedule",
+            subtitle='<p class="sub">Four weeks of the BIO321 practical, '
+            "half-hour by half-hour.</p>",
+            version=stamp,
+            toc=toc_weeks,
+            content=weeks,
+            rail=rail_link("index.html", "Back to the handout"),
+            main_class="wide",
+            pdf_name=SCHEDULE_PDF,
+            page_size="A4 landscape",
+            print_version=version_text(),
+        )
+
+
+def make_pdfs() -> None:
+    chrome = pdf.find_chrome()
+    if not chrome:
+        print("  ! no Chrome/Chromium found; PDFs not built (set CHROME=...)", file=sys.stderr)
+        return
+    jobs = [(OUT, SITE / HANDOUT_PDF)]
+    if SCHEDULE_OUT.exists():
+        jobs.append((SCHEDULE_OUT, SITE / SCHEDULE_PDF))
+    for page, out in jobs:
+        try:
+            pdf.render(page, out, chrome)
+        except Exception as exc:
+            print(f"  ! PDF of {page.name} failed: {exc}", file=sys.stderr)
+            continue
+        print(f"built {out.relative_to(ROOT)}  ({out.stat().st_size:,} bytes)")
 
 
 if __name__ == "__main__":
     main()
+    if "--pdf" in sys.argv[1:]:
+        make_pdfs()

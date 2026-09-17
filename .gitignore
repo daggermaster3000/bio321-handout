@@ -3,3 +3,5 @@ site/index.html
 site/figures/
 __pycache__/
 .DS_Store
+# Excel lock files
+~$*

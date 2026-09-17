@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import functools
 import http.server
+import importlib
 import socketserver
 import sys
 import threading
@@ -15,9 +16,17 @@ import time
 from pathlib import Path
 
 import build
+import pdf
+import schedule
 
 SITE = Path(__file__).resolve().parent
-WATCHED = [build.NOTE, build.TEMPLATE, Path(__file__).parent / "build.py"]
+WATCHED = [
+    build.NOTE,
+    build.TEMPLATE,
+    build.SCHEDULE,
+    Path(__file__).parent / "build.py",
+    Path(__file__).parent / "schedule.py",
+]
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8321
 
 
@@ -36,6 +45,10 @@ def watch() -> None:
         if now != last:
             last = now
             try:
+                # Pick up edits to the build code itself, not just the note.
+                importlib.reload(schedule)
+                importlib.reload(pdf)
+                importlib.reload(build)
                 build.main()
             except Exception as exc:  # keep serving the last good build
                 print(f"  ! build failed: {exc}", file=sys.stderr)

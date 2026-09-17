@@ -11,6 +11,13 @@ link, and an `![[image.png|400]]` embed followed by a bold or italic line
 becomes a numbered figure with that line as its caption. Figures are numbered
 by the page, so inserting one renumbers the rest.
 
+Ending a heading with `//hidden` keeps it out of the built page and the
+contents rail, together with everything under it down to the next heading of
+the same or higher level — so `## Experiment 3 //hidden` hides its `###`
+subsections too. On a line of its own the marker hides just that line. Inside
+a fenced code block it is left alone. Nothing is deleted from the note, and
+sections renumber around what is hidden.
+
 ## Building
 
 ```sh

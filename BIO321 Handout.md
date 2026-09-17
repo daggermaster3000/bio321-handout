@@ -1,7 +1,10 @@
 # Project overview
 
 ![[Pasted image 20260914194946.png]]
-In this project we will analyse the neural circuits of the cerebellum as well as brain morphology in zebrafish carrying a mutation in the *inpp5e* gene (a causative gene for the ciliopathy Joubert Syndrome). We will use immunofluorescence to analyse general cerebellar circuit morphology, eurydendroid cell clusters in the cerebellum as well as general brain morphology of *inpp5e* mutants compared to controls.
+In this project we will analyse the neural circuits of the cerebellum as well as brain morphology in zebrafish carrying a mutation in the *inpp5e* gene (a causative gene for the ciliopathy Joubert Syndrome). We will use immunofluorescence to analyse general cerebellar circuit morphology, eurydendroid cell clusters in the cerebellum as well as general brain morphology of *inpp5e* mutants compared to controls. 
+> As you will be more than planned, we will add a mutant to the project (*ift88*) so everyone can participate.
+
+
 ```table-of-contents
 title: **Table of contents**
 style: nestedList
@@ -101,24 +104,28 @@ The main benefits of this setup are **signal amplification** as multiple seconda
 **Figure 8: Illustration of antibody labelling principle**
 
 ### Explanation of a generic protocol
-Next, we will discuss the essential steps of a staining protocol
+Next, we will discuss the essential steps of a staining protocol.
+
 1. Fixation
-2. Permeabilization
-3. Blocking
-4. Primary staining
-5. Secondary staining
-6. Counter stain
-7. Clearing and mounting
-#### Fixation
+2. Washing
+3. Permeabilization
+4. Blocking
+5. Primary staining
+6. Secondary staining
+7. Counter stain
+8. Clearing and mounting
+#### 1. Fixation
 The first step is called fixation. It allows us to lock proteins into place to take a snapshot of the living state. This will prevent degradation, proteins from diffusing away or changing shape. This is generally done with one of the following:
+
 - Paraformaldehyde (PFA), crosslinks proteins together by forming methylene bridges between amino groups on adjacent proteins. This builds a stable mesh that holds antigens in position
-- Methanol 
 - Trichloroacetic acid (TCA), precipitates proteins and can expose some epitopes better. Harsher on the sample
+- Methanol (not used as often as it's a bit annoying)
+
 Keep in mind that there is a trade-off: too little fixation and the tissue is destroyed during the experimental process or antigens will diffuse. Too much and the epitope will be masked. Fixation is antibody dependant and therefore has to be optimised and validated empirically.
 
-#### Washing
-Washing removes a chemical agent (eg. PFA,primary antibody,...) before the next one is added (usually between every step). It clears residual PFA after fixation, which would otherwise crosslink the ABs. After antibody incubation steps it removes unbound antibodies (lower background signal). Usually done with PBS (phosphate-buffered saline), that keeps the sample in physiological conditions to not osmotically shock or denature the tissue. A detergent (Triton X-100 or Tween-20) is added to the wash solution to keep the sample membrane permeable. In general more/longer washes gives cleaner images.
-#### Permeabilization
+#### 2. Washing
+Washing removes a chemical agent (eg. PFA,primary antibody,...) before the next one is added (usually between every step). It clears residual PFA after fixation, which would otherwise crosslink the antibodies. After antibody incubation steps it removes unbound antibodies (lower background signal). Usually done with PBS (phosphate-buffered saline), that keeps the sample in physiological conditions to not osmotically shock or denature the tissue. A detergent (Triton X-100 or Tween-20) is added to the wash solution to keep the sample membrane permeable. In general more/longer washes gives cleaner images.
+#### 3. Permeabilization
 Antibodies being quite large (150 kDa) need a little help to penetrate the sample and access the antigen. Treating with Triton x-100, acetone or proteinase K helps the antibody penetrate the sample.
 
  - **Triton X-100 / Tween-20**: detergents that dissolve lipid membranes, creating pores. Triton is stronger and Tween is milder.
@@ -127,19 +134,19 @@ Antibodies being quite large (150 kDa) need a little help to penetrate the sampl
 
 **Trade-off:** more permeabilization = better antibody access but worse structural preservation. Older/larger samples need more and delicate structures need less.
 
-#### Blocking
+#### 4. Blocking
 Antibodies stick weakly and non-specifically to non specific surfaces in the sample. Blocking floods these non specific sites with a generic protein (like BSA) so the only strong binding site left is the specific target. 
 
-#### Primary antibody incubation
+#### 5. Primary antibody staining
 The antibody is incubated @4 °C overnight. This slows everything down and favours high affinity binding over weak non-specific sticking. The main parameter we control here is dilution. Too concentrated will give a lot of background signal, to dilute will give too weak of a signal. We normally determine this by titration through a process called antibody validation.
 
-#### Secondary antiboy incubatiuon
+#### 6. Secondary antiboy staining
 Similar to the primary incubation step. The secondary is raised agains the primary's species (eg. goat (<- primary's host species) anti-rabbit (<- secondary's host species)) (see appendix for more on how they are made) and carries a fluorophore. Fluorophore photobleach, so this step is done in the dark to preserve signal. 
 
-#### Nuclear counterstain
+#### 7. Nuclear counterstain
 This step is optional. Generally, DAPI is used to bind DNA and label nuclei.
 
-#### Clearing and mounting
+#### 8. Clearing and mounting
 Clearing with glycerol raises the refractive index of the sample to reduce light scattering. We can then image deeper into the sample with less blur. We then mount our sample such as the region of interest is as close as possible to the coverslip as objectives have limited working distance. In our case we will be doing the experiments on whole-mounts, meaning that the whole specimen conserved (as opposed to slicing, where physical sections are cut from the specimen, mounted on a glass slide then imaged (a real pain))
 
 #### Recap
@@ -306,9 +313,9 @@ The following section showcases the protocol we will be using.
 
 ---
 
-## 2. Wash Larvae
+## 2. Wash Larvae 
 
-## PFA-Fixed Larvae
+### PFA-Fixed Larvae
 
 1. Wash larvae **4 × 5 min in PBS**.
    - Larvae can be stored at **4°C for several days** after this step.
@@ -321,7 +328,7 @@ The following section showcases the protocol we will be using.
 
 ---
 
-## MeOH-Fixed Larvae
+### MeOH-Fixed Larvae
 
 1. Rehydrate larvae through decreasing MeOH concentrations:
    - **50% MeOH/PBS**, 5 min
@@ -331,7 +338,7 @@ The following section showcases the protocol we will be using.
 
 ---
 
-## TCA-Fixed Larvae
+### TCA-Fixed Larvae
 
 1. Wash larvae **4 × 5 min in PBS**.
    - Larvae can be stored at **4°C for several days** until staining.
@@ -491,9 +498,6 @@ Continue until larvae sink to the bottom.
 11. Seal the coverslip with **nail polish**.
 
 12. Store mounted samples at **4°C**.
-
----
-
 # Reagent Recipes
 
 | Reagent                       | Composition                                |
@@ -506,8 +510,9 @@ Continue until larvae sink to the bottom.
 | **Glycerol clearing**         | 25%, 50%, 70% glycerol in PDT or PBS       |
 
 **Stocks:** 
+
 - BSA 2%
-- Tx-100 10%
+- Triton X-100 10%
 - DMSO 100%
 - PBS 100%
 - Goat serum (GS) 100%
@@ -515,69 +520,72 @@ Continue until larvae sink to the bottom.
 ### Calculations/Dilutions
 Calculate the following dilutions for the reagents you will be using. When total volume is not specified, think about how many tubes you will be using.
 
+| Reagent  |        | volume |
+| -------- | ------ | ------ |
+| **PBDT** |        |        |
+|          | PBS    |        |
+|          | BSA    |        |
+|          | TX-100 |        |
+|          | DMSO   |        |
+|          | total  | 30ml   |
+
 | Reagent |        | volume |
 | ------- | ------ | ------ |
-| PBDT    |        |        |
+| **PDT** |        |        |
 |         | PBS    |        |
-|         | BSA    |        |
 |         | TX-100 |        |
 |         | DMSO   |        |
 |         | total  | 30ml   |
 
-| Reagent |        | volume |
-| ------- | ------ | ------ |
-| PDT     |        |        |
-|         | PBS    |        |
-|         | TX-100 |        |
-|         | DMSO   |        |
-|         | total  | 30ml   |
-
-| Reagent |       | volume |
-| ------- | ----- | ------ |
-| PBDT+GS |       |        |
-|         | PBDT  |        |
-|         | GS    |        |
-|         | total |        |
+| Reagent     |       | volume |
+| ----------- | ----- | ------ |
+| **PBDT+GS** |       |        |
+|             | PBDT  |        |
+|             | GS    |        |
+|             | total |        |
 
 **Experiment 1**
 
-| Reagent |       | volume |
-| ------- | ----- | ------ |
-| 1°AB    |       |        |
-|         | PBDT  |        |
-|         | GS    |        |
-|         | SV2   |        |
-|         | Actub |        |
-|         | total |        |
+| Reagent  |       | volume |
+| -------- | ----- | ------ |
+| **1°AB** |       |        |
+|          | PBDT  |        |
+|          | GS    |        |
+|          | SV2   |        |
+|          | Actub |        |
+|          | total |        |
 
-| Reagent |       | volume |
-| ------- | ----- | ------ |
-| 2°AB    |       |        |
-|         | PBDT  |        |
-|         | 1     |        |
-|         | 2     |        |
-|         | total |        |
+| Reagent  |       | volume |
+| -------- | ----- | ------ |
+| **2°AB** |       |        |
+|          | PBDT  |        |
+|          | 1     |        |
+|          | 2     |        |
+|          | total |        |
 
 **Experiment 2**
 
-| Reagent |            | volume |
-| ------- | ---------- | ------ |
-| 1°AB    |            |        |
-|         | PBDT       |        |
-|         | GS         |        |
-|         | Calretinin |        |
-|         | total      |        |
+| Reagent  |            | volume |
+| -------- | ---------- | ------ |
+| **1°AB** |            |        |
+|          | PBDT       |        |
+|          | GS         |        |
+|          | Calretinin |        |
+|          | total      |        |
 
-| Reagent |       | volume |
-| ------- | ----- | ------ |
-| 2°AB    |       |        |
-|         | PBDT  |        |
-|         | 1     |        |
-|         | total |        |
+| Reagent  |       | volume |
+| -------- | ----- | ------ |
+| **2°AB** |       |        |
+|          | PBDT  |        |
+|          | 1     |        |
+|          | total |        |
 
 
 The rest of the calculations will be done during the practical.
 # Analyzing your data
+# Analyzing your data //hidden
+(still working on this so ignore for now)
+
 In this section we will look at how we are going to analyse your data. We will be using an awesome open source python image visualisation tool called [napari](https://napari.org/stable/). This means that anyone can modify it, develop modules and plugins for a specific application. With the rise of vibe-coding developing your own software is becoming trivial. 
 ## Installing the tool
 1) Install [git](https://git-scm.com/install/)
@@ -606,7 +614,8 @@ to load 3D view. Go ahead and inspect of few of your samples.
 You can take screenshots of the viewer in the file menu and copy/paste to your power point
 ![[Pasted image 20260914170922.png|486]]
 
-
+### Annotating brain regions
+![[Pasted image 20260916112205.png|492]]
 ## Experiment 2
 
 ## Experiment 3
@@ -631,16 +640,16 @@ Yopak, K. E., Pakan, J. M. P., & Wylie, D. (2017). The cerebellum of nonmammalia
 Zhang, R., Tang, J., Li, T., Zhou, J., & Pan, W. (2022). *INPP5E* and coordination of signaling networks in cilia. *Frontiers in Molecular Biosciences*, 9, 885592. [10.3389/fmolb.2022.885592](https://doi.org/10.3389/fmolb.2022.885592)
 
 ## Web resources
-- [MicroscopyU — introduction to fluorescence microscopy](https://www.microscopyu.com/techniques/fluorescence/introduction-to-fluorescence-microscopy)
-- [MicroscopyU — introductory confocal concepts](https://www.microscopyu.com/techniques/confocal/introductory-confocal-concepts)
-- [MicroscopyU — resolution](https://www.microscopyu.com/microscopy-basics/resolution)
+- [MicroscopyU introduction to fluorescence microscopy](https://www.microscopyu.com/techniques/fluorescence/introduction-to-fluorescence-microscopy)
+- [MicroscopyU introductory confocal concepts](https://www.microscopyu.com/techniques/confocal/introductory-confocal-concepts)
+- [MicroscopyU resolution](https://www.microscopyu.com/microscopy-basics/resolution)
 - [FPbase spectra viewer](https://www.fpbase.org/spectra/) — plot excitation and emission spectra of fluorophores together
-- [The Zebrafish Book — stages of embryonic development (ZFIN)](https://zfin.org/zf_info/zfbook/stages/)
-- [ZeClinics — understanding zebrafish development stages](https://www.zeclinics.com/blog/understanding-zebrafish-development-stages/)
-- [TeachMeAnatomy — the cerebellum](https://teachmeanatomy.info/neuroanatomy/structures/cerebellum/)
-- [University of Washington — Joubert syndrome](https://depts.washington.edu/joubert/joubertsyndrome.php)
+- [The Zebrafish Book stages of embryonic development (ZFIN)](https://zfin.org/zf_info/zfbook/stages/)
+- [ZeClinics understanding zebrafish development stages](https://www.zeclinics.com/blog/understanding-zebrafish-development-stages/)
+- [TeachMeAnatomy the cerebellum](https://teachmeanatomy.info/neuroanatomy/structures/cerebellum/)
+- [University of Washington Joubert syndrome](https://depts.washington.edu/joubert/joubertsyndrome.php)
 
 ## Software
-- [napari](https://napari.org/stable/) — multidimensional image viewer for Python
-- [ARGUS](https://github.com/daggermaster3000/ARGUS) — the analysis tool used in this course
-- [git](https://git-scm.com/install/) and [Anaconda](https://www.anaconda.com/download/success) — needed to install ARGUS
+- [napari](https://napari.org/stable/) multidimensional image viewer for Python
+- [ARGUS](https://github.com/daggermaster3000/ARGUS) the analysis tool used in this course
+- [git](https://git-scm.com/install/) and [Anaconda](https://www.anaconda.com/download/success) needed to install ARGUS
