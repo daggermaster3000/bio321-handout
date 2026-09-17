@@ -445,6 +445,15 @@ def main() -> None:
     # Wide tables scroll inside their own box rather than pushing the page out.
     content = content.replace("<table>", '<div class="tablewrap"><table>')
     content = content.replace("</table>", "</table></div>")
+    # On paper a heading, or a bold label line, travels with the table under it.
+    content = re.sub(
+        r'((?:<h([2-4])(?![^>]*class="sec")[^>]*>(?:(?!</h\2>).)*</h\2>'
+        r'|<p><strong>(?:(?!</p>).)*</strong></p>)\s*'
+        r'<div class="tablewrap">(?:(?!</table>).)*</table></div>)',
+        r'<div class="keep">\1</div>',
+        content,
+        flags=re.S,
+    )
 
     def optional(field: str, tag: str, cls: str) -> str:
         text = meta.get(field, "").strip()

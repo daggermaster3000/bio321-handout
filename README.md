@@ -24,7 +24,16 @@ sections renumber around what is hidden.
 pip install -r site/requirements.txt
 python3 site/serve.py     # http://localhost:8321, rebuilds as you write
 python3 site/build.py     # one-off build into site/index.html
+python3 site/build.py --pdf   # also print both pages to PDF (needs Chrome)
 ```
+
+The "Download PDF" button serves `site/BIO321-handout.pdf` and
+`site/BIO321-schedule.pdf`, printed by headless Chrome from the pages' own
+print stylesheet: A4 (the schedule in landscape), each section on a new page,
+a running head with the commit, and page numbers. Chrome is found
+automatically; set `CHROME=/path/to/chrome` if it is somewhere unusual. Where no
+PDF was built, as in `serve.py` previews, the button opens the print dialog
+instead.
 
 `site/index.html` and `site/figures/` are generated and not committed.
 `$...$` and `$$...$$` in the note are rendered with KaTeX (loaded from a CDN);

@@ -207,6 +207,7 @@ These parameters are important to keep in mind when designing an experiment. But
 - Shorter wavelength leads to better (lower) resolution
 - For more details: [MicroscopyU — resolution](https://www.microscopyu.com/microscopy-basics/resolution)
 # Designing the experiment
+## Aims
 The aims of the project are the following:
 
 | Aim                                          | Biological question                                                                | Markers / channels                                                         | Analysis                                                                                              | Quantification                                                                          |
@@ -215,6 +216,8 @@ The aims of the project are the following:
 | **2. Eurydendroid cells in the cerebellum**  | Are Eurydendroid cell number, distribution, and associated axonal bundles altered? | **Calretinin**: Eurydendroid cells<br>**DAPI**: nuclei                     | Cell segmentation/counting with **Cellpose** + manual region annotation; assessment of axonal bundles | **Cell count per hemisphere**<br>**Axonal bundle integrity**<br>**Axonal bundle width** |
 | **3. Whole-brain morphology**                | Are the relative sizes of major brain regions altered?                             | **DAPI** from both stainings                                               | Manual anatomical delineation of **forebrain, midbrain, and hindbrain**                               | **Area measurements** for each region                                                   |
 
+## Experimental setup
+Both *inpp5e zh507* and *ift88* mutants display a curved body phenotype. This allows us to sort them without having to genotype them. However, for the sake of it we will be genotyping *ift88* to validate the curved phenotype. 
 ![[Pasted image 20260914141201.png|364]]
 **Figure 12: Experimental setup, mutants can be discriminated basedon their phenotype (body curvature), therefore samples are pooled for staining, total tubes: 2**
 
@@ -643,7 +646,7 @@ Zhang, R., Tang, J., Li, T., Zhou, J., & Pan, W. (2022). *INPP5E* and coordinati
 - [MicroscopyU introduction to fluorescence microscopy](https://www.microscopyu.com/techniques/fluorescence/introduction-to-fluorescence-microscopy)
 - [MicroscopyU introductory confocal concepts](https://www.microscopyu.com/techniques/confocal/introductory-confocal-concepts)
 - [MicroscopyU resolution](https://www.microscopyu.com/microscopy-basics/resolution)
-- [FPbase spectra viewer](https://www.fpbase.org/spectra/) — plot excitation and emission spectra of fluorophores together
+- [FPbase spectra viewer](https://www.fpbase.org/spectra/) plot excitation and emission spectra of fluorophores together
 - [The Zebrafish Book stages of embryonic development (ZFIN)](https://zfin.org/zf_info/zfbook/stages/)
 - [ZeClinics understanding zebrafish development stages](https://www.zeclinics.com/blog/understanding-zebrafish-development-stages/)
 - [TeachMeAnatomy the cerebellum](https://teachmeanatomy.info/neuroanatomy/structures/cerebellum/)

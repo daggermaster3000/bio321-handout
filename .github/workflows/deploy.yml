@@ -24,8 +24,13 @@ jobs:
           python-version: "3.12"
       - name: Install dependencies
         run: pip install -r site/requirements.txt
-      - name: Build site
-        run: python site/build.py
+      - name: Install fonts for the PDF
+        # Charis SIL stands in for Charter, which the page asks for first.
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-sil-charis fonts-liberation
+      - name: Build site and PDFs
+        run: python site/build.py --pdf
+      - name: Check the PDFs were made
+        run: test -s site/BIO321-handout.pdf
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

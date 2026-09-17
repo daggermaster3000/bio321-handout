@@ -21,8 +21,8 @@
   --ch-488:#127a3d;
   --ch-561:#b06012;
   --ch-647:#9c2a85;
-  --serif:Charter,"Bitstream Charter","Iowan Old Style",Georgia,"Times New Roman",serif;
-  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --serif:Charter,"Bitstream Charter","Charis SIL","Iowan Old Style",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,"Liberation Sans",sans-serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 
@@ -316,7 +316,7 @@ table:not(.timetable) td:empty::after{
     color:#666;vertical-align:bottom;padding-bottom:4mm;
   }
   @top-right{
-    content:"96e365b · 2026-09-16";
+    content:"818ad78 · 2026-09-17";
     font:8pt ui-monospace,Menlo,"DejaVu Sans Mono",monospace;
     color:#888;vertical-align:bottom;padding-bottom:4mm;
   }
@@ -370,12 +370,15 @@ table:not(.timetable) td:empty::after{
   h1,h2,h3,h4{break-after:avoid;break-inside:avoid}
   h3{margin-top:16pt}
   h4{margin-top:12pt}
-  p,li{break-inside:auto}
+  p{break-inside:auto}
+  li{break-inside:avoid}
+  li:last-child{break-before:avoid}
+  li:first-child{break-after:avoid}
   blockquote,pre,.mathblock,.todo{break-inside:avoid}
 
   /* figures stay whole, with their captions, and fit on a page */
   figure{max-width:100%;break-inside:avoid;margin:12pt 0}
-  figure img{border-color:#999;max-height:150mm;width:auto;max-width:100%;object-fit:contain}
+  figure img{border-color:#999;max-height:115mm;width:auto;max-width:100%;object-fit:contain}
   figcaption{color:#222;font-size:8.5pt}
   .figrow{gap:10px}
 
@@ -384,6 +387,8 @@ table:not(.timetable) td:empty::after{
   table{font-size:8.5pt}
   thead{display:table-header-group}
   tr{break-inside:avoid}
+  .tablewrap{break-inside:avoid}
+  .keep{break-inside:avoid}
   th,td{padding:3.5pt 7pt 3.5pt 0}
   table:not(.timetable) td:empty{height:3.2em;background:none}
   table:not(.timetable) td:empty::after{margin-top:1.8em;border-bottom:1px dashed #777}
@@ -397,6 +402,8 @@ table:not(.timetable) td:empty::after{
   .timetable td.slot{padding:2pt 5pt;font-size:7.5pt}
   .prose.wide > section h2.sec{font-size:13pt;margin-bottom:6pt}
   .prose.wide .tablewrap{margin:0}
+  .layout:has(.prose.wide) .contents{display:none}
+  .prose.wide > section:first-child{break-before:auto}
 
   a{color:#000;text-decoration:none}
 }
@@ -414,7 +421,7 @@ table:not(.timetable) td:empty::after{
 <p class="sub">Four weeks of the BIO321 practical, half-hour by half-hour.</p>
   </div>
   <div class="masthead-side">
-<p class="version"><a href="https://github.com/daggermaster3000/bio321-handout/commit/96e365b"><code>96e365b</code></a> · 2026-09-16<span>formatting tables + uncommitted changes</span></p>
+<p class="version"><a href="https://github.com/daggermaster3000/bio321-handout/commit/818ad78"><code>818ad78</code></a> · 2026-09-17<span>fixed pdf export + schedule + uncommitted changes</span></p>
     <p class="masthead-actions"><a class="pdf-button" href="BIO321-schedule.pdf" download><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8m0 0-3-3m3 3 3-3M3 13h10"/></svg>Download PDF</a></p>
   </div>
 </header>
