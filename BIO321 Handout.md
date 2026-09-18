@@ -504,7 +504,7 @@ Continue until larvae sink to the bottom.
 
 **Stocks:** 
 
-- BSA 2%
+- BSA 20%
 - Triton X-100 10%
 - DMSO 100%
 - PBS 100%
@@ -513,22 +513,22 @@ Continue until larvae sink to the bottom.
 ### Calculations/Dilutions
 Calculate the following dilutions for the reagents you will be using. When total volume is not specified, think about how many tubes you will be using.
 
-| Reagent  |        | volume |
-| -------- | ------ | ------ |
-| **PBDT** |        |        |
-|          | PBS    |        |
-|          | BSA    |        |
-|          | TX-100 |        |
-|          | DMSO   |        |
-|          | total  | 30ml   |
+| Reagent  |             | volume |
+| -------- | ----------- | ------ |
+| **PBDT** |             |        |
+|          | PBS         |        |
+|          | BSA 1%      |        |
+|          | TX-100 0.5% |        |
+|          | DMSO        |        |
+|          | total       | 30ml   |
 
-| Reagent |        | volume |
-| ------- | ------ | ------ |
-| **PDT** |        |        |
-|         | PBS    |        |
-|         | TX-100 |        |
-|         | DMSO   |        |
-|         | total  | 30ml   |
+| Reagent |             | volume |
+| ------- | ----------- | ------ |
+| **PDT** |             |        |
+|         | PBS         |        |
+|         | TX-100 0.5% |        |
+|         | DMSO        |        |
+|         | total       | 30ml   |
 
 | Reagent     |        | volume |
 | ----------- | ------ | ------ |
