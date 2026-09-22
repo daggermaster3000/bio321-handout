@@ -593,14 +593,14 @@ The axial resolution $d_{z}$ (or thickness of a slice) can be approximated using
 $$
 d_{z}= \frac{2n\lambda}{NA^{2}}
 $$
-
+However the BC43 already optimizes the step size for us, so we must only make sure that we are sampling enough to capture entirely our cells. If we mess around here, downstream analysis and computation will not work nicely.
 
 
 # Analyzing your data
-# Analyzing your data //hidden
-(still working on this so ignore for now)
 
 In this section we will look at how we are going to analyse your data. We will be using an awesome open source python image visualisation tool called [napari](https://napari.org/stable/). This means that anyone can modify it, develop modules and plugins for a specific application.
+
+Before getting into it, take a moment to think about what would be interesting to look at. Think about how cilia may affect neuronal development. Other approaches than the ones already planned are also interesting.
 ## Installing the tool
 1) Install [git](https://git-scm.com/install/)
 2) Install [python/anaconda](https://www.anaconda.com/download/success)
