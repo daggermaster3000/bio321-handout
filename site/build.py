@@ -164,6 +164,8 @@ def restore_math(content: str) -> str:
 
 
 HIDDEN = re.compile(r"\s*//hidden\s*$", re.I)
+# An answer runs from its marker to the end of the line.
+ANSWER = re.compile(r"(?:^|\s)//answer\b.*$", re.I)
 
 
 def strip_hidden(md: str) -> str:
@@ -173,6 +175,9 @@ def strip_hidden(md: str) -> str:
     level, so hiding `## Experiment 3` also hides its `###` subsections. On a
     line of its own it hides that line alone. Markers inside fenced code
     blocks are left as written.
+
+    `//answer` hides the rest of its line, so `1) Why MIPs? //answer Speed`
+    keeps the question and drops the answer; a line left empty goes too.
     """
     out: list[str] = []
     fence = None
@@ -200,6 +205,10 @@ def strip_hidden(md: str) -> str:
             if heading:
                 skip_level = len(heading.group(1))
             continue  # a bare `//hidden` line hides only itself
+        if ANSWER.search(line):
+            line = ANSWER.sub("", line).rstrip()
+            if not line.strip():
+                continue
         out.append(line)
 
     return "\n".join(out)

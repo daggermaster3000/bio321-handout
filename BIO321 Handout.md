@@ -559,19 +559,60 @@ Wait until we know the amount of tubes we will be using (once the larvae are sor
 |              | 2°Actub 1:300      |        |
 |              | 2°Calretinin 1:300 |        |
 |              | total              |        |
+# Imaging guide
+Depending on what we want to analyse, imaging needs to be as reproducible and consistent as possible. Sources of technical variation are what we want to limit. Below are a few examples and how we deal with them when possible:
+
+- Staining batch variations (pipetting, clumping, damage,...) -> pool samples when possible (visible phenotype)
+- Mounting variations (tilt, compression, damage) -> Adapt mounting method to your needs (region of interest)
+- Imaging region (positioning and field of view) -> Consistently image the same region based on anatomical landmarks
+- Imaging parameters (exposure, laser power, z-step size, objective) -> Use same parameters throughout the experiment (especially important when we want to quantify intensities)
+
+Take a moment to think about which parameters affect each of our three experiments, how they might affect the results and how we can minimise their impact.
+
+Our main concern in **experiment 1** would be mounting variations. Differences in orientation and compression could affect the morphological measurements. 
+
+In **experiment 2** we want to get a picture of the labelled eurydendroid cells throughout the cerebellum. Our main concerns are:
+
+- Imaging the same anatomical region consistently between samples
+- Choosing an appropriate z-step size so that cells are adequately sampled throughout the z-plane and not missed between optical sections.
+
+To get an idea, of the region we will image you can play around with the zebrafish brain atlas at the following link (note that these images are taken at 6 dpf):
+[https://mapzebrain.org/atlas/2d#1789983895060](https://mapzebrain.org/atlas/2d#1789983895060)
+![[Pasted image 20260921131548.png]]
+**Figure 13: Mapzebrain visualization of Calretinin staining (red) and the cerebellum (yellow highlight)**
+
+In our case we will focus on imaging the cerebellar clusters(view crosshair). Unfortunately, we will not be able to image as deep as the zbrain atlas. 
+
+The z-step can be chosen empirically, by testing different parameters and checking whether we can adequately capture the cells. However, we can also use the **Nyquist-Shannon sampling theorem** to estimate an appropriate sampling interval based on the optical resolution of the microscope.
+
+The Nyquist-Shannon sampling theorem states that **to accurately reconstruct a continous analog signal into digital form, you must sample it at a rate strictly greater than twice the highest frequency component present in the signal.** In microscopy this can be translated to the following principle:
+**The distance between two consecutive z-slices should be approximately half or less than the smallest axial feature that the microscope can resolve.**
+In other words: 
+$$z_{step} ≤ \frac{d_{z}}{2}$$
+The axial resolution $d_{z}$ (or thickness of a slice) can be approximated using the following formula:
+$$
+d_{z}= \frac{2n\lambda}{NA^{2}}
+$$
+
+
 
 # Analyzing your data
 # Analyzing your data //hidden
 (still working on this so ignore for now)
 
-In this section we will look at how we are going to analyse your data. We will be using an awesome open source python image visualisation tool called [napari](https://napari.org/stable/). This means that anyone can modify it, develop modules and plugins for a specific application. With the rise of vibe-coding developing your own software is becoming trivial. 
+In this section we will look at how we are going to analyse your data. We will be using an awesome open source python image visualisation tool called [napari](https://napari.org/stable/). This means that anyone can modify it, develop modules and plugins for a specific application.
 ## Installing the tool
 1) Install [git](https://git-scm.com/install/)
 2) Install [python/anaconda](https://www.anaconda.com/download/success)
 3) The tool we will use can be downloaded here: [ARGUS](https://github.com/daggermaster3000/ARGUS). Follow the instructions from the README file to install it.
 4) Test everything is working
-## Experiment 1
+## Experiment 1 - General neural circuit structure
 The analysis of this experiment will illustrate how we quantitatively assess images. You will generate a few representative samples from each group and visually assess the integrity of each labelled structure.
+To launch the viewer type in anaconda prompt or terminal (in the ARGUS directory):
+```bash
+microscopy-viewer
+```
+``
 Run the ARGUS code, the viewer should open (can be a bit slow on some machines)
 
 We start by opening the folder containing our experiment.
@@ -592,12 +633,54 @@ to load 3D view. Go ahead and inspect of few of your samples.
 You can take screenshots of the viewer in the file menu and copy/paste to your power point
 ![[Pasted image 20260914170922.png|486]]
 
+## Experiment 2 - Counting eurydendroid cells
+For the sake of simplicity, we are going to work with maximum intensity projections (MIPs). This way you can process your data on your own laptops. The goal is to count the number of cells, analyse their morpholometrics and their density throughout the cerebellum. The workflow we will be implementing for this is the following:
+![[Pasted image 20260921140849.png]]
+**Figure 14: Workflow of the analysis.**
+
+
 ### Annotating brain regions
+As mentioned during the course, calretinin labels not only eurydendroid cells but all calretinin positive neurons throughout the brain. Therefore we will outline the cerebellum to restrict our our analysis to eurydendroid cells in the cerebellum. 
+
+As we are interested in the whole brain for the next experiment, you will also delineate the other areas in this step - Forebrain (FB), midbrain (MB), optic tectums left and right (OT-L, OT-R) and cerebellum (CB). Make sure to keep the naming consistent throughout all your samples.
+
+Start by generating MIPs of DAPI and Calretinin channels (overlaying the other channels can help to delineate the brain as well), by right clicking on the layer>projections>max projection. Hide the z-stack and repeat. 
+![[Pasted image 20260921151145.png|544]]
+
+Next, go to the brain regions panel and press add region, this will create a new shapes layer.
+![[Pasted image 20260921151338.png]]
+select the layer in the left panel and draw the regions by clicking to add dots and double click to finish. Once one region is done click "add region" and rename it accordingly in the table. Repeat this process until you have labelled all the regions then press "save to file".
+You can use the following image as reference:
 ![[Pasted image 20260916112205.png|492]]
-## Experiment 2
 
-## Experiment 3
+Close the sample from the experiment setup panel and open a new one and repeat the process. 
+### Segmenting eurydendroid cells
+To segment our cells, we will use cellpose. It's a widely spread and easy to use deep learning package. You can find more on the architecture of the neural network here: [https://www.biorxiv.org/content/10.1101/2020.02.02.931238v1.full](https://www.biorxiv.org/content/10.1101/2020.02.02.931238v1.full).
+#### Finding good parameters
+First load a sample then go to the segmentation pane on the right.
+![[Pasted image 20260921152932.png]]
+In the setup tab select the channel to segment (calretinin) and match the rest of the parameters to the screenshot. Hit "segment".  If the result is not satisfying, play around with the "maximum diameter" and the "flow threshold" and cell "probability parameters". 
 
+> The segmentation will never be perfect and always miss a few cells, but that's okay. Just try to minimize background or debris labelling.
+
+Once you are happy with your parameters, in the experiment setup panel, drag to select all the samples.
+![[Pasted image 20260921133312.png]]
+ Go to the batch panel, enter the channel to segment, and run
+![[Pasted image 20260921153510.png]]
+Make sure all samples are again selected and go to the analysis panel on the right and hit "analyse selected".
+![[Pasted image 20260921154647.png|460]]
+This may take a while, so go watch a movie while it's running.
+Once finished, type the following in a new anaconda prompt/terminal window:
+```bash
+streamlit run apps/region_explorer.py
+```
+## Experiment 3 - General brain morphometrics
+
+
+## Questions
+1) What are the advantages and disadvantages of working with MIPs compared to 3D data?
+//answer Smaller files, faster processing, better contrast. Compression of z-axis information. 
+2) 
 ## Plotting and statistics
 # References
 ## Literature

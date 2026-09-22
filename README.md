@@ -18,6 +18,11 @@ subsections too. On a line of its own the marker hides just that line. Inside
 a fenced code block it is left alone. Nothing is deleted from the note, and
 sections renumber around what is hidden.
 
+`//answer` hides the rest of its line, for answers kept in the note but off
+the site and PDF: `1) Why MIPs? //answer Smaller files, faster to process`
+shows only the question. A line that starts with `//answer` disappears
+entirely, so a longer answer can go on its own line(s) under the question.
+
 ## Building
 
 ```sh
