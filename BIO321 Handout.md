@@ -559,6 +559,7 @@ Wait until we know the amount of tubes we will be using (once the larvae are sor
 |              | 2°Actub 1:300      |        |
 |              | 2°Calretinin 1:300 |        |
 |              | total              |        |
+
 # Imaging guide
 Depending on what we want to analyse, imaging needs to be as reproducible and consistent as possible. Sources of technical variation are what we want to limit. Below are a few examples and how we deal with them when possible:
 
