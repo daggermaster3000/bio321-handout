@@ -576,25 +576,40 @@ In **experiment 2** we want to get a picture of the labelled eurydendroid cells 
 
 - Imaging the same anatomical region consistently between samples
 - Choosing an appropriate z-step size so that cells are adequately sampled throughout the z-plane and not missed between optical sections.
+- Choosing the appropriate objective
 
 To get an idea, of the region we will image you can play around with the zebrafish brain atlas at the following link (note that these images are taken at 6 dpf):
 [https://mapzebrain.org/atlas/2d#1789983895060](https://mapzebrain.org/atlas/2d#1789983895060)
 ![[Pasted image 20260921131548.png]]
 **Figure 13: Mapzebrain visualization of Calretinin staining (red) and the cerebellum (yellow highlight)**
 
-In our case we will focus on imaging the cerebellar clusters(view crosshair). Unfortunately, we will not be able to image as deep as the zbrain atlas. 
+In our case we will focus on imaging the cerebellar clusters (red cluster around the crosshair).
 
 The z-step can be chosen empirically, by testing different parameters and checking whether we can adequately capture the cells. However, we can also use the **Nyquist-Shannon sampling theorem** to estimate an appropriate sampling interval based on the optical resolution of the microscope.
 
-The Nyquist-Shannon sampling theorem states that **to accurately reconstruct a continous analog signal into digital form, you must sample it at a rate strictly greater than twice the highest frequency component present in the signal.** In microscopy this can be translated to the following principle:
+The **Nyquist-Shannon sampling theorem** states that, to accurately reconstruct a band-limited signal, it must be sampled at a frequency of at least twice the highest frequency present in the signal. In microscopy, this can be translated into the following practical principle:
+
 **The distance between two consecutive z-slices should be approximately half or less than the smallest axial feature that the microscope can resolve.**
-In other words: 
-$$z_{step} ≤ \frac{d_{z}}{2}$$
-The axial resolution $d_{z}$ (or thickness of a slice) can be approximated using the following formula:
-$$
-d_{z}= \frac{2n\lambda}{NA^{2}}
-$$
-However the BC43 already optimizes the step size for us, so we must only make sure that we are sampling enough to capture entirely our cells. If we mess around here, downstream analysis and computation will not work nicely.
+
+$$z_{step}≤\frac{dz}{2}$$
+
+The axial resolution $d_z$ can be approximately estimated as:
+
+$$dz= \frac{2n\lambda}{NA^2}$$
+
+For our imaging conditions, with $n=1.33$, $\lambda=568\,\text{nm}$, and $NA=0.8$:
+
+$$d_z \approx 2.36\,\mu m$$
+
+Therefore, the maximum Nyquist z-step is approximately:
+
+$$z_{\text{step}} \leq 1.18\,\mu m$$
+
+The BC43 uses a z-step of approximately **0.39 µm**, which is well below this limit. We therefore have sufficient axial sampling and are **oversampling the axial resolution by approximately a factor of 3** relative to the Nyquist limit.
+
+Maintaining sufficient z-sampling is important because undersampling can lead to loss of spatial information and inaccurate 3D reconstruction and downstream quantitative image analysis.
+
+In **experiment 3**, the main concern is again mounting the samples consistently, and imaging the entirety of the brain. 
 
 
 # Analyzing your data
