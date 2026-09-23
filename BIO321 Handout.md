@@ -576,7 +576,7 @@ In **experiment 2** we want to get a picture of the labelled eurydendroid cells 
 
 - Imaging the same anatomical region consistently between samples
 - Choosing an appropriate z-step size so that cells are adequately sampled throughout the z-plane and not missed between optical sections.
-- Choosing the appropriate objective
+- Choosing the appropriate objective (spoiler: 20x)
 
 To get an idea, of the region we will image you can play around with the zebrafish brain atlas at the following link (note that these images are taken at 6 dpf):
 [https://mapzebrain.org/atlas/2d#1789983895060](https://mapzebrain.org/atlas/2d#1789983895060)
@@ -612,12 +612,14 @@ Maintaining sufficient z-sampling is important because undersampling can lead to
 In **experiment 3**, the main concern is again mounting the samples consistently, and imaging the entirety of the brain. 
 
 
+
 # Analyzing your data
 
 In this section we will look at how we are going to analyse your data. We will be using an awesome open source python image visualisation tool called [napari](https://napari.org/stable/). This means that anyone can modify it, develop modules and plugins for a specific application.
 
 Before getting into it, take a moment to think about what would be interesting to look at. Think about how cilia may affect neuronal development. Other approaches than the ones already planned are also interesting.
 ## Installing the tool
+
 1) Install [git](https://git-scm.com/install/)
 2) Install [python/anaconda](https://www.anaconda.com/download/success)
 3) The tool we will use can be downloaded here: [ARGUS](https://github.com/daggermaster3000/ARGUS). Follow the instructions from the README file to install it.
@@ -650,7 +652,7 @@ You can take screenshots of the viewer in the file menu and copy/paste to your p
 ![[Pasted image 20260914170922.png|486]]
 
 ## Experiment 2 - Counting eurydendroid cells
-For the sake of simplicity, we are going to work with maximum intensity projections (MIPs). This way you can process your data on your own laptops. The goal is to count the number of cells, analyse their morpholometrics and their density throughout the cerebellum. The workflow we will be implementing for this is the following:
+For the sake of simplicity, we are going to work with maximum intensity projections (MIPs). This way you can process your data on your own laptops. The goal is to count the number of cells, analyse their morphometrics and their density throughout the cerebellum. The workflow we will be implementing for this is the following:
 ![[Pasted image 20260921140849.png]]
 **Figure 14: Workflow of the analysis.**
 
