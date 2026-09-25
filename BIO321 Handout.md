@@ -611,6 +611,15 @@ Maintaining sufficient z-sampling is important because undersampling can lead to
 
 In **experiment 3**, the main concern is again mounting the samples consistently, and imaging the entirety of the brain. 
 
+**Laser intensity and exposure**  
+
+**Signal to noise (SNR)** characterizes the quality of a measurement and determines the ultimate performance of the imaging system. The BC43 uses a CCD (charged coupled device) image sensor so the SNR represents the ratio of measured light signal to the combined noise (background variation from the electronic system + background biological signal). You want to choose your parameters to maximize SNR.
+
+Depending on what you want to measure, your approach may vary. For **qualitative imaging or morphological measurements**, the main objective is to obtain sufficient signal to clearly distinguish the structure of interest from the background while avoiding saturation. For **quantitative fluorescence measurements**, acquisition parameters are more critical because the measured intensity itself is part of the data. In this case, avoid saturated pixels and keep the laser intensity, exposure time and detector settings constant across all samples and experimental groups.
+
+In general, start with a relatively low laser intensity and increase it until the signal is clearly distinguishable from the background. Exposure time can then be adjusted to make efficient use of the detector's dynamic range. Avoid compensating for very weak signal by excessively increasing detector gain, as this also increases the contribution of electronic noise. Similarly, increasing laser intensity or exposure time indefinitely does not necessarily improve the measurement, as photobleaching and saturation can become limiting factors.
+
+The final parameters should be selected using representative samples covering the expected range of fluorescence intensities. The brightest relevant structures should remain below saturation while the dimmest structures of interest remain sufficiently above background. Once appropriate parameters have been established, **laser intensity, exposure time, detector gain and other relevant acquisition settings should be kept constant for all samples in the experiment**.
 
 
 # Analyzing your data
@@ -620,14 +629,34 @@ In this section we will look at how we are going to analyse your data. We will b
 Before getting into it, take a moment to think about what would be interesting to look at. Think about how cilia may affect neuronal development. Other approaches than the ones already planned are also interesting.
 ## Installing the tool
 
-1) Install [git](https://git-scm.com/install/)
-2) Install [python/anaconda](https://www.anaconda.com/download/success)
-3) The tool we will use can be downloaded here: [ARGUS](https://github.com/daggermaster3000/ARGUS). Follow the instructions from the README file to install it.
-4) Test everything is working
+- Install [git](https://git-scm.com/install/)
+- Install [python/anaconda](https://www.anaconda.com/download/success)
+- Create a new environment
+```bash
+conda create -n ARGUS-ENV
+```
+- The tool we will use can be downloaded here: [ARGUS](https://github.com/daggermaster3000/ARGUS). 
+- Follow the instructions from the README file to install it.
+```
+git clone https://github.com/daggermaster3000/ARGUS.git
+cd ARGUS
+python -m pip install .
+```
+- install the specific libraries
+```
+python -m pip install ".[segmentation]"
+pip install ".[explorer]"
+```
+- Test everything is working
+```bash
+microscopy-viewer
+```
+
 ## Experiment 1 - General neural circuit structure
 The analysis of this experiment will illustrate how we quantitatively assess images. You will generate a few representative samples from each group and visually assess the integrity of each labelled structure.
-To launch the viewer type in anaconda prompt or terminal (in the ARGUS directory):
+To launch the viewer type in anaconda prompt or terminal:
 ```bash
+conda activate ARGUS-ENV
 microscopy-viewer
 ```
 ``
