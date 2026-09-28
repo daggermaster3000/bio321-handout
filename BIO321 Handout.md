@@ -680,12 +680,12 @@ to load 3D view. Go ahead and inspect of few of your samples.
 You can take screenshots of the viewer in the file menu and copy/paste to your power point
 ![[Pasted image 20260914170922.png|486]]
 
+Use both 10x and 20x images.
 ## Experiment 2 - Counting eurydendroid cells
 For the sake of simplicity, we are going to work with maximum intensity projections (MIPs). This way you can process your data on your own laptops. The goal is to count the number of cells, analyse their morphometrics and their density throughout the cerebellum. The workflow we will be implementing for this is the following:
 ![[Pasted image 20260921140849.png]]
 **Figure 14: Workflow of the analysis.**
-
-
+If signal is too faint (or staining doesn't work as planned), you will quantify them by hand using the napari plugin.
 ### Annotating brain regions
 As mentioned during the course, calretinin labels not only eurydendroid cells but all calretinin positive neurons throughout the brain. Therefore we will outline the cerebellum to restrict our our analysis to eurydendroid cells in the cerebellum. 
 
@@ -699,6 +699,7 @@ Next, go to the brain regions panel and press add region, this will create a new
 select the layer in the left panel and draw the regions by clicking to add dots and double click to finish. Once one region is done click "add region" and rename it accordingly in the table. Repeat this process until you have labelled all the regions then press "save to file".
 You can use the following image as reference:
 ![[Pasted image 20260916112205.png|492]]
+
 
 Close the sample from the experiment setup panel and open a new one and repeat the process. 
 ### Segmenting eurydendroid cells
@@ -727,8 +728,20 @@ streamlit run apps/region_explorer.py
 ## Questions
 1) What are the advantages and disadvantages of working with MIPs compared to 3D data?
 //answer Smaller files, faster processing, better contrast. Compression of z-axis information. 
+
 2) 
 ## Plotting and statistics
+Below are a few guidelines on what to plot. Play around with the data and be creative. Also ask yourself if you see any effect, is it true signal or experimental variability, or a batch effect? 
+### Experiment 1
+- Choose a few representative images for each genotype/condition where we can nicely see the actub and sv2 signal in the cerebellum
+### Experiment 2
+- Generate eurydendroid cell count plots for the cerebellum (mut vs ctl)
+- If automated segmentation works, look at cell specific features (morpho+intensity)
+- Additionally cell density graphs in the cerebellum(if cerebellar morphology does not vary between mut and wt)
+### Experiment 3
+- Generate plots for each of the brain regions you delineated (mut vs ctl), normalize to WB area if you notice a difference in WB area between genotype.
+- Additionally generate plots of morphometric variables
+
 # References
 ## Literature
 Bielas, S. L., Silhavy, J. L., Brancati, F., Kisseleva, M. V., Al-Gazali, L., Sztriha, L., Bayoumi, R. A., Zaki, M. S., Abdel-Aleem, A., Rosti, R. O., Kayserili, H., Swistun, D., Scott, L. C., Bertini, E., Boltshauser, E., Fazzi, E., Travaglini, L., Field, S. J., Gayral, S., … Gleeson, J. G. (2009). Mutations in *INPP5E*, encoding inositol polyphosphate-5-phosphatase E, link phosphatidyl inositol signaling to the ciliopathies. *Nature Genetics*, 41(9), 1032–1036. [10.1038/ng.423](https://doi.org/10.1038/ng.423)
