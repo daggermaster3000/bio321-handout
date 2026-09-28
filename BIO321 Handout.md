@@ -52,6 +52,7 @@ The cerebellar circuits receive inputs from two excitatory fibers, climbing fibe
 Below you can see a dorsal view of the ZF brain from https://mapzebrain.org/atlas/2d. The cerebellum is highlighted in blue and the eurydendroid cells in color.
 ![[Pasted image 20260915175526.png]]
 
+Why look at the eurydendroid cells? The rationale is that during development, ventrally derived Hedgehog signalling limits the size of the eurydendroid cell lineage (McFarland et al., 2008; Pose-Méndez et al., 2023). 
 ## Zebrafish
 Zebrafish larvae are optically transparent as well as a rapid developmental timeline, making them an attractive model for microscopy experiments and studying developmental biology. By treating the larvae with 1-phenyl-2-thiourea (PTU) we can block melanin pigmentation removing obstruction caused by pigmented cells.
 
@@ -752,7 +753,11 @@ Kaslin, J., Kroehne, V., Benato, F., Argenton, F., & Brand, M. (2013). Developme
 
 Kimmel, C. B., Ballard, W. W., Kimmel, S. R., Ullmann, B., & Schilling, T. F. (1995). Stages of embryonic development of the zebrafish. *Developmental Dynamics*, 203(3), 253–310. [10.1002/aja.1002030302](https://doi.org/10.1002/aja.1002030302)
 
+McFarland, K. A., Topczewska, J. M., Weidinger, G., Dorsky, R. I., & Appel, B. (2008). Hh and Wnt signaling regulate formation of olig2+ neurons in the zebrafish cerebellum. *Developmental Biology*, 318(1), 162–171. [10.1016/j.ydbio.2008.03.016](https://doi.org/10.1016/j.ydbio.2008.03.016)
+
 Park, S. M., Jang, H. J., & Lee, J. H. (2019). Roles of primary cilia in the developing brain. *Frontiers in Cellular Neuroscience*, 13, 218. [10.3389/fncel.2019.00218](https://doi.org/10.3389/fncel.2019.00218)
+
+Pose-Méndez, S., Schramm, P., Valishetti, K., & Köster, R. W. (2023). Development, circuitry, and function of the zebrafish cerebellum. *Cellular and Molecular Life Sciences*, 80(8), 227. [10.1007/s00018-023-04879-5](https://doi.org/10.1007/s00018-023-04879-5)
 
 Stringer, C., Wang, T., Michaelos, M., & Pachitariu, M. (2021). Cellpose: a generalist algorithm for cellular segmentation. *Nature Methods*, 18(1), 100–106. [10.1038/s41592-020-01018-x](https://doi.org/10.1038/s41592-020-01018-x)
 
