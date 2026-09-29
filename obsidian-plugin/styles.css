@@ -1,0 +1,10 @@
+.nsb-status { cursor: pointer; }
+.nsb-muted { color: var(--text-muted); display: block; }
+.nsb-status-list {
+	max-height: 12em;
+	overflow: auto;
+	font-size: var(--font-ui-smaller);
+	background: var(--background-secondary);
+	padding: 8px 10px;
+	border-radius: 4px;
+}

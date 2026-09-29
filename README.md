@@ -23,7 +23,25 @@ the site and PDF: `1) Why MIPs? //answer Smaller files, faster to process`
 shows only the question. A line that starts with `//answer` disappears
 entirely, so a longer answer can go on its own line(s) under the question.
 
-## Building
+## Building from Obsidian
+
+`obsidian-plugin/` is a small desktop plugin that runs the scripts below for
+you. Install it once by linking it into the vault, then turn on *Note Site
+Builder* under Settings → Community plugins:
+
+```sh
+ln -s "$PWD/obsidian-plugin" "<vault>/.obsidian/plugins/note-site-builder"
+```
+
+The globe in the left ribbon (or the command palette, "Note Site Builder: …")
+then offers: build, build with PDFs, live preview (rebuilds on every save),
+open the page or PDF, and publish — which shows the changed files, asks for a
+one-line message, then commits and pushes so GitHub redeploys. It works on
+whichever project the open note is in (any folder with `site/build.py`), and
+finds a Python with the requirements on its own; set one in the plugin's
+settings if it picks the wrong one.
+
+## Building from the terminal
 
 ```sh
 pip install -r site/requirements.txt

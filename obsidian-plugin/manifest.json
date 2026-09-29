@@ -1,0 +1,9 @@
+{
+	"id": "note-site-builder",
+	"name": "Note Site Builder",
+	"version": "0.1.0",
+	"minAppVersion": "1.0.0",
+	"description": "Build, preview and publish the handout website from the note, using the project's site/build.py.",
+	"author": "Quillan Favey",
+	"isDesktopOnly": true
+}
